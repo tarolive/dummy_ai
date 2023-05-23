@@ -5,15 +5,15 @@ import (
 )
 
 var (
-	ServerAddress = GetString("SERVER_ADDRESS", ":3000")
+	ServerAddress = Get("SERVER_ADDRESS", ":3000")
 )
 
-func GetString(key string, defaultValue string) string {
+func Get(key string, defaultValue string) string {
 
-	value := os.Getenv(key)
+	value, isPresent := os.LookupEnv(key)
 
-	if value == "" {
-		value = defaultValue
+	if !isPresent {
+		return defaultValue
 	}
 
 	return value
