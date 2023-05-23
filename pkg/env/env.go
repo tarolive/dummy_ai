@@ -10,11 +10,10 @@ var (
 
 func Get(key string, defaultValue string) string {
 
-	value, isPresent := os.LookupEnv(key)
+	if value, isPresent := os.LookupEnv(key); isPresent {
 
-	if !isPresent {
-		return defaultValue
+		return value
 	}
 
-	return value
+	return defaultValue
 }
