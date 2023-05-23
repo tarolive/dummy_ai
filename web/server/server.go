@@ -10,9 +10,8 @@ import (
 
 func Run() {
 
-	err := http.ListenAndServe(env.ServerAddress, nil)
+	if err := http.ListenAndServe(env.ServerAddress, nil); err != nil {
 
-	if err != nil {
 		panic(err)
 	}
 }
