@@ -10,6 +10,9 @@ import (
 
 func Run() {
 
+	serveFile("/apple_touch_icon.png" /**/, "./web/static/image/favicon/apple_touch_icon.png")
+	serveFile("/favicon.ico" /*         */, "./web/static/image/favicon/favicon.ico")
+
 	if err := http.ListenAndServe(env.ServerAddress, nil); err != nil {
 
 		panic(err)
