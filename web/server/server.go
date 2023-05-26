@@ -15,3 +15,11 @@ func Run() {
 		panic(err)
 	}
 }
+
+func serveFile(route string, file string) {
+
+	http.HandleFunc(route, func(responseWriter http.ResponseWriter, request *http.Request) {
+
+		http.ServeFile(responseWriter, request, file)
+	})
+}
