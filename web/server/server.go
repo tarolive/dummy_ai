@@ -10,6 +10,9 @@ import (
 
 func Run() {
 
+	serveFile("/manifest.json" /*       */, "./web/static/config/manifest.json")
+	serveFile("/robots.txt" /*          */, "./web/static/config/robots.txt")
+	serveFile("/sitemap.xml" /*         */, "./web/static/config/sitemap.xml")
 	serveFile("/apple_touch_icon.png" /**/, "./web/static/img/favicon/apple_touch_icon.png")
 	serveFile("/favicon.ico" /*         */, "./web/static/img/favicon/favicon.ico")
 	serveFile("/favicon.svg" /*         */, "./web/static/img/favicon/favicon.svg")
