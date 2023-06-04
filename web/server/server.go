@@ -42,6 +42,11 @@ func serveFile(route string, file string) {
 
 	http.HandleFunc(route, func(responseWriter http.ResponseWriter, request *http.Request) {
 
+		if request.URL.Path != route {
+
+			return
+		}
+
 		http.ServeFile(responseWriter, request, file)
 	})
 }
