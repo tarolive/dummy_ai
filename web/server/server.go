@@ -29,7 +29,7 @@ func Run() {
 	serveFile("/wasm_run.js" /*         */, "./web/static/lib/wasm/wasm_run.js")
 	serveFile("/index.wasm" /*          */, "./web/static/wasm/index.wasm")
 
-	servePage("/index" /**/, "/index.wasm")
+	servePage("/" /**/, "/index.wasm")
 
 	if err := http.ListenAndServe(env.ServerAddress, nil); err != nil {
 
