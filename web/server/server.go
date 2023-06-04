@@ -20,6 +20,7 @@ func Run() {
 	serveFile("/favicon_512x512.png" /* */, "./web/static/img/favicon/favicon_512x512.png")
 	serveFile("/logo.svg" /*            */, "./web/static/img/logo/logo.svg")
 	serveFile("/logo_white.svg" /*      */, "./web/static/img/logo/logo_white.svg")
+	serveFile("/index.wasm" /*          */, "./web/static/wasm/index.wasm")
 
 	if err := http.ListenAndServe(env.ServerAddress, nil); err != nil {
 
