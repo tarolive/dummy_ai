@@ -27,6 +27,7 @@ func Run() {
 	serveFile("/logo_white.svg" /*      */, "./web/static/img/logo/logo_white.svg")
 	serveFile("/wasm_exec.js" /*        */, "./web/static/lib/wasm/wasm_exec.js")
 	serveFile("/wasm_run.js" /*         */, "./web/static/lib/wasm/wasm_run.js")
+	serveFile("/error.wasm" /*          */, "./web/static/wasm/error.wasm")
 	serveFile("/index.wasm" /*          */, "./web/static/wasm/index.wasm")
 
 	servePage("/" /**/, "/index.wasm")
