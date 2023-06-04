@@ -25,6 +25,8 @@ func Run() {
 	serveFile("/favicon_512x512.png" /* */, "./web/static/img/favicon/favicon_512x512.png")
 	serveFile("/logo.svg" /*            */, "./web/static/img/logo/logo.svg")
 	serveFile("/logo_white.svg" /*      */, "./web/static/img/logo/logo_white.svg")
+	serveFile("/wasm_exec.js" /*        */, "./web/static/lib/wasm/wasm_exec.js")
+	serveFile("/wasm_run.js" /*         */, "./web/static/lib/wasm/wasm_run.js")
 	serveFile("/index.wasm" /*          */, "./web/static/wasm/index.wasm")
 
 	servePage("/index" /**/, "/index.wasm")
