@@ -42,11 +42,6 @@ func serveFile(route string, file string) {
 
 	http.HandleFunc(route, func(responseWriter http.ResponseWriter, request *http.Request) {
 
-		if request.URL.Path != route {
-
-			return
-		}
-
 		http.ServeFile(responseWriter, request, file)
 	})
 }
@@ -54,6 +49,11 @@ func serveFile(route string, file string) {
 func servePage(route string, wasmRoute string) {
 
 	http.HandleFunc(route, func(responseWriter http.ResponseWriter, request *http.Request) {
+
+		if request.URL.Path != route {
+
+			return
+		}
 
 		if err := serverTemplate.Execute(responseWriter, wasmRoute); err != nil {
 
