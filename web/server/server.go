@@ -52,7 +52,13 @@ func servePage(route string, wasmRoute string) {
 
 		if request.URL.Path != route {
 
-			servePageError(responseWriter, request, http.StatusNotFound)
+			responseWriter.WriteHeader(http.StatusNotFound)
+
+			if err := serverTemplate.Execute(responseWriter, "/error.wasm"); err != nil {
+
+				panic(err)
+			}
+
 			return
 		}
 
@@ -61,14 +67,4 @@ func servePage(route string, wasmRoute string) {
 			panic(err)
 		}
 	})
-}
-
-func servePageError(responseWriter http.ResponseWriter, request *http.Request, httpStatus int) {
-
-	responseWriter.WriteHeader(httpStatus)
-
-	if err := serverTemplate.Execute(responseWriter, "/error.wasm"); err != nil {
-
-		panic(err)
-	}
 }
