@@ -52,7 +52,7 @@ func servePage(route string, wasmRoute string) {
 
 		if request.URL.Path != route {
 
-			servePageError(responseWriter, http.StatusNotFound)
+			error404(responseWriter)
 			return
 		}
 
@@ -63,9 +63,9 @@ func servePage(route string, wasmRoute string) {
 	})
 }
 
-func servePageError(responseWriter http.ResponseWriter, httpStatus int) {
+func error404(responseWriter http.ResponseWriter) {
 
-	responseWriter.WriteHeader(httpStatus)
+	responseWriter.WriteHeader(http.StatusNotFound)
 
 	if err := serverTemplate.Execute(responseWriter, "/error_404.wasm"); err != nil {
 
