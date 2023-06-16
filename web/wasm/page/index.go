@@ -4,6 +4,10 @@ import (
 	"syscall/js"
 )
 
+import (
+	"dummy_ai/web/wasm/layout"
+)
+
 func main() {
 
 	document := js.Global().Get("document")
@@ -11,6 +15,5 @@ func main() {
 	h2 := document.Call("createElement", "h2")
 	h2.Set("innerHTML", "Hello World, DummyAI!")
 
-	body := document.Get("body")
-	body.Call("appendChild", h2)
+	layout.NewPage(h2)
 }
