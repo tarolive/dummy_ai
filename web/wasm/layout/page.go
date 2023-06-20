@@ -5,17 +5,16 @@ import (
 )
 
 var (
-	window   = js.Global()
-	document = window.Get("document")
+	Window   = js.Global()
+	Document = Window.Get("document")
 )
 
 var (
-	html = document.Get("documentElement")
-	head = document.Get("head")
-	body = document.Get("body")
+	Head = Document.Get("head")
+	Body = Document.Get("body")
 )
 
 func NewPage(page js.Value) {
 
-	body.Call("appendChild", page)
+	Body.Call("appendChild", page)
 }
