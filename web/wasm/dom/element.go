@@ -20,7 +20,22 @@ func Global() Element {
 	return New(js.Global())
 }
 
-func (element Element) Get(property string) Element {
+func (element Element) Get(property string) js.Value {
 
-	return New(element.value.Get(property))
+	return element.value.Get(property)
+}
+
+func (element Element) GetElement(property string) Element {
+
+	return New(element.Get(property))
+}
+
+func (element Element) GetBool(property string) bool {
+
+	return element.Get(property).Bool()
+}
+
+func (element Element) GetString(property string) string {
+
+	return element.Get(property).String()
 }
