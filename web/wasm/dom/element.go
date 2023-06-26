@@ -79,3 +79,8 @@ func (element Element) SetString(property string, value string) {
 
 	element.Set(property, value)
 }
+
+func (element Element) Call(method string, args ...any) {
+
+	element.value.Call(method, args)
+}
