@@ -35,6 +35,16 @@ func (element Element) GetBool(property string) bool {
 	return element.Get(property).Bool()
 }
 
+func (element Element) GetInt(property string) int {
+
+	return element.Get(property).Int()
+}
+
+func (element Element) GetFloat(property string) float64 {
+
+	return element.Get(property).Float()
+}
+
 func (element Element) GetString(property string) string {
 
 	return element.Get(property).String()
