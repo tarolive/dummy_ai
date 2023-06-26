@@ -1,19 +1,15 @@
 package dom
 
-import (
-	"syscall/js"
+var (
+	Window = Global()
 )
 
 var (
-	Window = js.Global()
+	Document        = Window.GetElement("document")
+	DocumentElement = Window.GetElement("documentElement")
 )
 
 var (
-	Document        = Window.Get("document")
-	DocumentElement = Window.Get("documentElement")
-)
-
-var (
-	Head = Document.Get("head")
-	Body = Document.Get("body")
+	Head = Document.GetElement("head")
+	Body = Document.GetElement("body")
 )
