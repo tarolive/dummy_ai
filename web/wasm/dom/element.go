@@ -19,3 +19,8 @@ func Global() Element {
 
 	return New(js.Global())
 }
+
+func (element Element) Get(property string) Element {
+
+	return New(element.value.Get(property))
+}
