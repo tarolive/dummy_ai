@@ -80,7 +80,7 @@ func (element Element) SetString(property string, value string) {
 	element.Set(property, value)
 }
 
-func (element Element) Call(method string, args ...any) {
+func (element Element) Call(method string, args ...any) js.Value {
 
-	element.value.Call(method, args)
+	return element.value.Call(method, args)
 }
