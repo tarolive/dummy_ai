@@ -49,3 +49,33 @@ func (element Element) GetString(property string) string {
 
 	return element.Get(property).String()
 }
+
+func (element Element) Set(property string, value any) {
+
+	element.value.Set(property, value)
+}
+
+func (element Element) SetElement(property string, value Element) {
+
+	element.Set(property, value)
+}
+
+func (element Element) SetBool(property string, value bool) {
+
+	element.Set(property, value)
+}
+
+func (element Element) SetInt(property string, value int) {
+
+	element.Set(property, value)
+}
+
+func (element Element) SetFloat(property string, value float64) {
+
+	element.Set(property, value)
+}
+
+func (element Element) SetString(property string, value string) {
+
+	element.Set(property, value)
+}
