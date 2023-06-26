@@ -14,3 +14,8 @@ func New(value js.Value) Element {
 		value: value,
 	}
 }
+
+func Global() Element {
+
+	return New(js.Global())
+}
