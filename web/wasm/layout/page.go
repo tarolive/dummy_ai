@@ -29,7 +29,7 @@ func CreatePage(page js.Value) {
 func createMetaCharset() {
 
 	metaCharset := document.Call("createElement", "meta")
-	metaCharset.Set("charset", "UTF-8")
+	metaCharset.Call("setAttribute", "charset", "UTF-8")
 	head.Call("appendChild", metaCharset)
 }
 
