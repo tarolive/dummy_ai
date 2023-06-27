@@ -13,5 +13,5 @@ func main() {
 	h2 := js.Global().Get("document").Call("createElement", "h2")
 	h2.Set("innerHTML", "Error 404 - Page Not Found")
 
-	layout.NewPage(h2)
+	layout.CreatePage(h2)
 }
