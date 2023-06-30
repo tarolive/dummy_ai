@@ -19,5 +19,8 @@ var (
 
 func CreatePage(page js.Value) {
 
-	body.Call("appendChild", page)
+	pageContainer := document.Call("createElement", "div")
+	pageContainer.Call("appendChild", page)
+
+	body.Call("appendChild", pageContainer)
 }
