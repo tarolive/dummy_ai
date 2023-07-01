@@ -29,11 +29,9 @@ func createPageContainer(page js.Value) js.Value {
 
 	pageContainerStyle := pageContainer.Get("style")
 	pageContainerStyle.Set("position", "fixed")
-	pageContainerStyle.Set("top", "0")
-	pageContainerStyle.Set("right", "0")
-	pageContainerStyle.Set("bottom", "0")
-	pageContainerStyle.Set("left", "0")
+	pageContainerStyle.Set("inset", "0 0 0 0")
 	pageContainerStyle.Set("padding", "10px")
+	pageContainerStyle.Set("overflow-x", "hidden")
 	pageContainerStyle.Set("overflow-y", "auto")
 	pageContainerStyle.Set("background-color", "#151515")
 	pageContainerStyle.Set("color", "white")
