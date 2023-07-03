@@ -25,6 +25,7 @@ func Run() {
 	serveFile("/favicon_512x512.png" /* */, "./web/static/img/favicon/favicon_512x512.png")
 	serveFile("/logo.svg" /*            */, "./web/static/img/logo/logo.svg")
 	serveFile("/logo_white.svg" /*      */, "./web/static/img/logo/logo_white.svg")
+	serveFile("/rhds.min.js" /*         */, "./web/static/lib/rhds/rhds.min.js")
 	serveFile("/wasm_exec.js" /*        */, "./web/static/lib/wasm/wasm_exec.js")
 	serveFile("/wasm_run.js" /*         */, "./web/static/lib/wasm/wasm_run.js")
 	serveFile("/error_404.wasm" /*      */, "./web/static/wasm/error_404.wasm")
