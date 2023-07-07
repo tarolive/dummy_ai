@@ -33,8 +33,8 @@ func createPageContainer(page js.Value) js.Value {
 	pageContainerStyle.Set("padding", "10px")
 	pageContainerStyle.Set("overflow-x", "hidden")
 	pageContainerStyle.Set("overflow-y", "auto")
-	pageContainerStyle.Set("background-color", "#151515")
-	pageContainerStyle.Set("color", "white")
+	pageContainerStyle.Set("background-color", "var(--rh-color-surface-darkest)")
+	pageContainerStyle.Set("color", "var(--rh-color-text-primary-on-dark)")
 
 	return pageContainer
 }
