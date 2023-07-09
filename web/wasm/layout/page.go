@@ -25,21 +25,9 @@ func CreatePage(page js.Value) {
 
 func createNavigation() js.Value {
 
-	navigationImage := document.Call("createElement", "img")
-	navigationImage.Set("src", "/logo.svg")
-	navigationImage.Set("alt", "")
-
-	navigationImageStyle := navigationImage.Get("style")
-	navigationImageStyle.Set("width" /*        */, "var(--rh-space-2xl)")
-	navigationImageStyle.Set("height" /*       */, "var(--rh-space-2xl)")
-	navigationImageStyle.Set("margin-right" /* */, "var(--rh-space-xl)")
-
-	navigationText := document.Call("createElement", "h3")
-	navigationText.Set("innerHTML", "DummyAI")
-
 	navigation := document.Call("createElement", "div")
-	navigation.Call("appendChild", navigationImage)
-	navigation.Call("appendChild", navigationText)
+	navigation.Call("appendChild", createNavigationImage())
+	navigation.Call("appendChild", createNavigationText())
 
 	navigationStyle := navigation.Get("style")
 	navigationStyle.Set("position" /*         */, "fixed")
@@ -54,6 +42,28 @@ func createNavigation() js.Value {
 	navigationStyle.Set("color" /*            */, "var(--rh-color-text-primary-on-dark)")
 
 	return navigation
+}
+
+func createNavigationImage() js.Value {
+
+	navigationImage := document.Call("createElement", "img")
+	navigationImage.Set("src", "/logo.svg")
+	navigationImage.Set("alt", "")
+
+	navigationImageStyle := navigationImage.Get("style")
+	navigationImageStyle.Set("width" /*        */, "var(--rh-space-2xl)")
+	navigationImageStyle.Set("height" /*       */, "var(--rh-space-2xl)")
+	navigationImageStyle.Set("margin-right" /* */, "var(--rh-space-xl)")
+
+	return navigationImage
+}
+
+func createNavigationText() js.Value {
+
+	navigationText := document.Call("createElement", "h2")
+	navigationText.Set("innerHTML", "DummyAI")
+
+	return navigationText
 }
 
 func createPageContainer(page js.Value) js.Value {
