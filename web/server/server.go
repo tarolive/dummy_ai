@@ -15,24 +15,25 @@ var (
 
 func Run() {
 
-	serveFile("/manifest.json" /*       */, "./web/static/config/manifest.json")
-	serveFile("/robots.txt" /*          */, "./web/static/config/robots.txt")
-	serveFile("/sitemap.xml" /*         */, "./web/static/config/sitemap.xml")
-	serveFile("/apple_touch_icon.png" /**/, "./web/static/img/favicon/apple_touch_icon.png")
-	serveFile("/favicon.ico" /*         */, "./web/static/img/favicon/favicon.ico")
-	serveFile("/favicon.svg" /*         */, "./web/static/img/favicon/favicon.svg")
-	serveFile("/favicon_192x192.png" /* */, "./web/static/img/favicon/favicon_192x192.png")
-	serveFile("/favicon_512x512.png" /* */, "./web/static/img/favicon/favicon_512x512.png")
-	serveFile("/logo.svg" /*            */, "./web/static/img/logo/logo.svg")
-	serveFile("/logo_white.svg" /*      */, "./web/static/img/logo/logo_white.svg")
-	serveFile("/rhds.min.css" /*        */, "./web/static/lib/rhds/rhds.min.css")
-	serveFile("/rhds.min.js" /*         */, "./web/static/lib/rhds/rhds.min.js")
-	serveFile("/wasm_exec.js" /*        */, "./web/static/lib/wasm/wasm_exec.js")
-	serveFile("/wasm_run.js" /*         */, "./web/static/lib/wasm/wasm_run.js")
-	serveFile("/error_404.wasm" /*      */, "./web/static/wasm/error_404.wasm")
-	serveFile("/index.wasm" /*          */, "./web/static/wasm/index.wasm")
+	serveFile("/manifest.json" /*           */, "./web/static/config/manifest.json")
+	serveFile("/robots.txt" /*              */, "./web/static/config/robots.txt")
+	serveFile("/sitemap.xml" /*             */, "./web/static/config/sitemap.xml")
+	serveFile("/apple_touch_icon.png" /*    */, "./web/static/img/favicon/apple_touch_icon.png")
+	serveFile("/favicon.ico" /*             */, "./web/static/img/favicon/favicon.ico")
+	serveFile("/favicon.svg" /*             */, "./web/static/img/favicon/favicon.svg")
+	serveFile("/favicon_192x192.png" /*     */, "./web/static/img/favicon/favicon_192x192.png")
+	serveFile("/favicon_512x512.png" /*     */, "./web/static/img/favicon/favicon_512x512.png")
+	serveFile("/logo.svg" /*                */, "./web/static/img/logo/logo.svg")
+	serveFile("/logo_white.svg" /*          */, "./web/static/img/logo/logo_white.svg")
+	serveFile("/rhds.min.css" /*            */, "./web/static/lib/rhds/rhds.min.css")
+	serveFile("/rhds.min.js" /*             */, "./web/static/lib/rhds/rhds.min.js")
+	serveFile("/RedHatDisplay-Bold.woff" /* */, "./web/static/lib/rhds/font/RedHatDisplay-Bold.woff")
+	serveFile("/wasm_exec.js" /*            */, "./web/static/lib/wasm/wasm_exec.js")
+	serveFile("/wasm_run.js" /*             */, "./web/static/lib/wasm/wasm_run.js")
+	serveFile("/error_404.wasm" /*          */, "./web/static/wasm/error_404.wasm")
+	serveFile("/index.wasm" /*              */, "./web/static/wasm/index.wasm")
 
-	servePage("/" /**/, "/index.wasm")
+	servePage("/" /* */, "/index.wasm")
 
 	if err := http.ListenAndServe(env.ServerAddress, nil); err != nil {
 
