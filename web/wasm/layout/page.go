@@ -28,13 +28,13 @@ func createPageContainer(page js.Value) js.Value {
 	pageContainer.Call("appendChild", page)
 
 	pageContainerStyle := pageContainer.Get("style")
-	pageContainerStyle.Set("position", "fixed")
-	pageContainerStyle.Set("inset", "0 0 0 0")
-	pageContainerStyle.Set("padding", "10px")
-	pageContainerStyle.Set("overflow-x", "hidden")
-	pageContainerStyle.Set("overflow-y", "auto")
-	pageContainerStyle.Set("background-color", "var(--rh-color-surface-darkest)")
-	pageContainerStyle.Set("color", "var(--rh-color-text-primary-on-dark)")
+	pageContainerStyle.Set("position" /*         */, "fixed")
+	pageContainerStyle.Set("inset" /*            */, "0 0 0 0")
+	pageContainerStyle.Set("padding" /*          */, "10px")
+	pageContainerStyle.Set("overflow-x" /*       */, "hidden")
+	pageContainerStyle.Set("overflow-y" /*       */, "auto")
+	pageContainerStyle.Set("background-color" /* */, "var(--rh-color-surface-darkest)")
+	pageContainerStyle.Set("color" /*            */, "var(--rh-color-text-primary-on-dark)")
 
 	return pageContainer
 }
