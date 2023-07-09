@@ -25,14 +25,31 @@ func CreatePage(page js.Value) {
 
 func createNavigation() js.Value {
 
+	navigationImage := document.Call("createElement", "img")
+	navigationImage.Set("src", "/logo.svg")
+	navigationImage.Set("alt", "")
+
+	navigationImageStyle := navigationImage.Get("style")
+	navigationImageStyle.Set("width" /*        */, "var(--rh-space-2xl)")
+	navigationImageStyle.Set("height" /*       */, "var(--rh-space-2xl)")
+	navigationImageStyle.Set("margin-right" /* */, "var(--rh-space-xl)")
+
+	navigationText := document.Call("createElement", "h3")
+	navigationText.Set("innerHTML", "DummyAI")
+
 	navigation := document.Call("createElement", "div")
+	navigation.Call("appendChild", navigationImage)
+	navigation.Call("appendChild", navigationText)
 
 	navigationStyle := navigation.Get("style")
 	navigationStyle.Set("position" /*         */, "fixed")
-	navigationStyle.Set("top" /*              */, "0")
-	navigationStyle.Set("right" /*            */, "0")
-	navigationStyle.Set("left" /*             */, "0")
+	navigationStyle.Set("top" /*              */, 0)
+	navigationStyle.Set("right" /*            */, 0)
+	navigationStyle.Set("left" /*             */, 0)
 	navigationStyle.Set("height" /*           */, "72px")
+	navigationStyle.Set("padding" /*          */, "0 var(--rh-space-xl)")
+	navigationStyle.Set("display" /*          */, "flex")
+	navigationStyle.Set("align-items" /*      */, "center")
 	navigationStyle.Set("background-color" /* */, "var(--rh-color-surface-darkest)")
 	navigationStyle.Set("color" /*            */, "var(--rh-color-text-primary-on-dark)")
 
@@ -46,8 +63,8 @@ func createPageContainer(page js.Value) js.Value {
 
 	pageContainerStyle := pageContainer.Get("style")
 	pageContainerStyle.Set("position" /*         */, "fixed")
-	pageContainerStyle.Set("inset" /*            */, "72px 0 0 0")
-	pageContainerStyle.Set("padding" /*          */, "10px")
+	pageContainerStyle.Set("inset" /*            */, "var(--rh-space-4xl) 0 0")
+	pageContainerStyle.Set("padding" /*          */, "var(--rh-space-lg) var(--rh-space-md) var(--rh-space-md)")
 	pageContainerStyle.Set("overflow-x" /*       */, "hidden")
 	pageContainerStyle.Set("overflow-y" /*       */, "auto")
 	pageContainerStyle.Set("background-color" /* */, "var(--rh-color-surface-lightest)")
