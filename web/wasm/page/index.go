@@ -11,7 +11,7 @@ import (
 func main() {
 
 	h2 := js.Global().Get("document").Call("createElement", "h2")
-	h2.Set("innerHTML", "Hello World, DummyAI!")
+	h2.Set("innerHTML", "Hello World, DummyAI! Language: "+layout.Language())
 
 	layout.CreatePage(h2)
 }
