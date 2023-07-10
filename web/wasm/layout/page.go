@@ -9,13 +9,19 @@ var (
 )
 
 var (
-	document = window.Get("document")
+	document  = window.Get("document")
+	navigator = window.Get("navigator")
 )
 
 var (
 	head = document.Get("head")
 	body = document.Get("body")
 )
+
+func Language() string {
+
+	return navigator.Get("language").String()
+}
 
 func CreatePage(page js.Value) {
 
