@@ -9,8 +9,9 @@ var (
 )
 
 var (
-	document  = window.Get("document")
-	navigator = window.Get("navigator")
+	document     = window.Get("document")
+	localStorage = window.Get("localStorage")
+	navigator    = window.Get("navigator")
 )
 
 var (
@@ -21,6 +22,11 @@ var (
 func Language() string {
 
 	return navigator.Get("language").String()
+}
+
+func SetLanguage(language string) {
+
+	localStorage.Set("language", language)
 }
 
 func CreatePage(page js.Value) {
