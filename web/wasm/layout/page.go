@@ -21,6 +21,11 @@ var (
 
 func Language() string {
 
+	if language := localStorage.Get("language").String(); language != "" {
+
+		return language
+	}
+
 	return navigator.Get("language").String()
 }
 
