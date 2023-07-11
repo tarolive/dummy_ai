@@ -26,7 +26,10 @@ func Language() string {
 		return language
 	}
 
-	return navigator.Get("language").String()
+	language := navigator.Get("language").String()[:2]
+	SetLanguage(language)
+
+	return language
 }
 
 func SetLanguage(language string) {
