@@ -5,42 +5,25 @@ import (
 )
 
 var (
-	window = js.Global()
+	window   = js.Global()
+	document = window.Get("document")
 )
 
-var (
-	document     = window.Get("document")
-	localStorage = window.Get("localStorage")
-	navigator    = window.Get("navigator")
-)
+func CreatePage() js.Value {
 
-var (
-	head = document.Get("head")
-	body = document.Get("body")
-)
+	page := createPage()
 
-func Language() string {
-
-	if language := localStorage.Get("language").String(); language != "" {
-
-		return language
-	}
-
-	language := navigator.Get("language").String()[:2]
-	SetLanguage(language)
-
-	return language
-}
-
-func SetLanguage(language string) {
-
-	localStorage.Set("language", language)
-}
-
-func CreatePage(page js.Value) {
-
+	body := document.Get("body")
 	body.Call("appendChild", createNavigation())
 	body.Call("appendChild", createPageContainer(page))
+
+	return page
+}
+
+func createPage() js.Value {
+
+	page := document.Call("createElement", "div")
+	return page
 }
 
 func createNavigation() js.Value {
