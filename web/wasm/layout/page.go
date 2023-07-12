@@ -20,6 +20,25 @@ func CreatePage() js.Value {
 	return page
 }
 
+func createPage() js.Value {
+
+	page := document.Call("createElement", "div")
+
+	pageStyle := page.Get("style")
+	pageStyle.Set("position" /*         */, "fixed")
+	pageStyle.Set("top" /*              */, "72px")
+	pageStyle.Set("right" /*            */, 0)
+	pageStyle.Set("bottom" /*           */, 0)
+	pageStyle.Set("left" /*             */, 0)
+	pageStyle.Set("padding" /*          */, "var(--rh-space-md)")
+	pageStyle.Set("overflow-x" /*       */, "hidden")
+	pageStyle.Set("overflow-y" /*       */, "auto")
+	pageStyle.Set("background-color" /* */, "var(--rh-color-surface-lightest)")
+	pageStyle.Set("color" /*            */, "var(--rh-color-text-primary-on-light)")
+
+	return page
+}
+
 func createNavigation() js.Value {
 
 	navigation := document.Call("createElement", "div")
@@ -61,23 +80,4 @@ func createNavigationText() js.Value {
 	navigationText.Set("innerHTML", "DummyAI")
 
 	return navigationText
-}
-
-func createPage() js.Value {
-
-	page := document.Call("createElement", "div")
-
-	pageStyle := page.Get("style")
-	pageStyle.Set("position" /*         */, "fixed")
-	pageStyle.Set("top" /*              */, "72px")
-	pageStyle.Set("right" /*            */, 0)
-	pageStyle.Set("bottom" /*           */, 0)
-	pageStyle.Set("left" /*             */, 0)
-	pageStyle.Set("padding" /*          */, "var(--rh-space-md)")
-	pageStyle.Set("overflow-x" /*       */, "hidden")
-	pageStyle.Set("overflow-y" /*       */, "auto")
-	pageStyle.Set("background-color" /* */, "var(--rh-color-surface-lightest)")
-	pageStyle.Set("color" /*            */, "var(--rh-color-text-primary-on-light)")
-
-	return page
 }
