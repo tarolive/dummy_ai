@@ -5,8 +5,7 @@ import (
 )
 
 var (
-	window   = js.Global()
-	document = window.Get("document")
+	document = js.Global().Get("document")
 )
 
 func CreatePage() js.Value {
