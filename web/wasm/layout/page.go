@@ -15,14 +15,8 @@ func CreatePage() js.Value {
 
 	body := document.Get("body")
 	body.Call("appendChild", createNavigation())
-	body.Call("appendChild", createPageContainer(page))
+	body.Call("appendChild", page)
 
-	return page
-}
-
-func createPage() js.Value {
-
-	page := document.Call("createElement", "div")
 	return page
 }
 
@@ -69,22 +63,21 @@ func createNavigationText() js.Value {
 	return navigationText
 }
 
-func createPageContainer(page js.Value) js.Value {
+func createPage() js.Value {
 
-	pageContainer := document.Call("createElement", "div")
-	pageContainer.Call("appendChild", page)
+	page := document.Call("createElement", "div")
 
-	pageContainerStyle := pageContainer.Get("style")
-	pageContainerStyle.Set("position" /*         */, "fixed")
-	pageContainerStyle.Set("top" /*              */, "72px")
-	pageContainerStyle.Set("right" /*            */, 0)
-	pageContainerStyle.Set("bottom" /*           */, 0)
-	pageContainerStyle.Set("left" /*             */, 0)
-	pageContainerStyle.Set("padding" /*          */, "var(--rh-space-md)")
-	pageContainerStyle.Set("overflow-x" /*       */, "hidden")
-	pageContainerStyle.Set("overflow-y" /*       */, "auto")
-	pageContainerStyle.Set("background-color" /* */, "var(--rh-color-surface-lightest)")
-	pageContainerStyle.Set("color" /*            */, "var(--rh-color-text-primary-on-light)")
+	pageStyle := page.Get("style")
+	pageStyle.Set("position" /*         */, "fixed")
+	pageStyle.Set("top" /*              */, "72px")
+	pageStyle.Set("right" /*            */, 0)
+	pageStyle.Set("bottom" /*           */, 0)
+	pageStyle.Set("left" /*             */, 0)
+	pageStyle.Set("padding" /*          */, "var(--rh-space-md)")
+	pageStyle.Set("overflow-x" /*       */, "hidden")
+	pageStyle.Set("overflow-y" /*       */, "auto")
+	pageStyle.Set("background-color" /* */, "var(--rh-color-surface-lightest)")
+	pageStyle.Set("color" /*            */, "var(--rh-color-text-primary-on-light)")
 
-	return pageContainer
+	return page
 }
