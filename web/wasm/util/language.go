@@ -1,6 +1,11 @@
 package util
 
 var (
+	languages = map[string]string{
+		"en": "English",
+		"es": "Español",
+		"pt": "Português",
+	}
 	language = ""
 )
 
@@ -11,7 +16,7 @@ func Language() string {
 		return language
 	}
 
-	if language = LocalStorage("language"); language != "" {
+	if language = LocalStorage("language"); languages[language] != "" {
 
 		return language
 	}
