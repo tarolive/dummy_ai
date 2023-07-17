@@ -37,7 +37,10 @@ func Language() string {
 		}
 	}
 
-	return ENGLISH
+	language := ENGLISH
+
+	SetLanguage(language)
+	return language
 }
 
 func SetLanguage(language string) {
