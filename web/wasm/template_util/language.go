@@ -13,7 +13,6 @@ const (
 var (
 	_window       = js.Global()
 	_localStorage = _window.Get("localStorage")
-	_navigator    = _window.Get("navigator")
 )
 
 func Language() string {
@@ -23,7 +22,7 @@ func Language() string {
 		return language
 	}
 
-	if language := _navigator.Get("language").String(); language != "" {
+	if language := _window.Get("navigator").Get("language").String(); language != "" {
 
 		if len(language) > 2 {
 
