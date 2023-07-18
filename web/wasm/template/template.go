@@ -23,5 +23,9 @@ func CreatePage() js.Value {
 	html.Set("lang", Language)
 
 	page := _document.Call("createElement", "div")
+
+	body := _document.Get("body")
+	body.Call("appendChild", page)
+
 	return page
 }
