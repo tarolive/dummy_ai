@@ -19,6 +19,9 @@ var (
 
 func CreatePage() js.Value {
 
+	html := _window.Get("documentElement")
+	html.Set("lang", Language)
+
 	page := _document.Call("createElement", "div")
 	return page
 }
