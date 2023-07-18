@@ -16,3 +16,9 @@ var (
 	_window   = js.Global()
 	_document = _window.Get("document")
 )
+
+func CreatePage() js.Value {
+
+	page := _document.Call("createElement", "div")
+	return page
+}
