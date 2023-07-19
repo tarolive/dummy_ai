@@ -25,7 +25,14 @@ func CreatePage() js.Value {
 	page := _document.Call("createElement", "div")
 
 	body := _document.Get("body")
+	body.Call("appendChild", createNavigation())
 	body.Call("appendChild", page)
 
 	return page
+}
+
+func createNavigation() js.Value {
+
+	navigation := _document.Call("createElement", "div")
+	return navigation
 }
