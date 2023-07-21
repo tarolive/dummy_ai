@@ -34,6 +34,7 @@ func CreatePage() js.Value {
 func createNavigation() js.Value {
 
 	navigation := _document.Call("createElement", "div")
+	navigation.Call("appendChild", createNavigationImage())
 
 	navigationStyle := navigation.Get("style")
 	navigationStyle.Set("position" /*         */, "fixed")
@@ -48,4 +49,13 @@ func createNavigation() js.Value {
 	navigationStyle.Set("color" /*            */, "var(--rh-color-text-primary-on-dark)")
 
 	return navigation
+}
+
+func createNavigationImage() js.Value {
+
+	navigationImage := _document.Call("createElement", "img")
+	navigationImage.Set("src", "/logo.svg")
+	navigationImage.Set("alt", "")
+
+	return navigationImage
 }
