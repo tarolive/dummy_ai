@@ -36,14 +36,16 @@ func createNavigation() js.Value {
 	navigation := _document.Call("createElement", "div")
 
 	navigationStyle := navigation.Get("style")
-	navigationStyle.Set("position" /*    */, "fixed")
-	navigationStyle.Set("top" /*         */, 0)
-	navigationStyle.Set("right" /*       */, 0)
-	navigationStyle.Set("left" /*        */, 0)
-	navigationStyle.Set("height" /*      */, "72px")
-	navigationStyle.Set("padding" /*     */, "0 var(--rh-space-xl)")
-	navigationStyle.Set("display" /*     */, "flex")
-	navigationStyle.Set("align-items" /* */, "center")
+	navigationStyle.Set("position" /*         */, "fixed")
+	navigationStyle.Set("top" /*              */, 0)
+	navigationStyle.Set("right" /*            */, 0)
+	navigationStyle.Set("left" /*             */, 0)
+	navigationStyle.Set("height" /*           */, "72px")
+	navigationStyle.Set("padding" /*          */, "0 var(--rh-space-xl)")
+	navigationStyle.Set("display" /*          */, "flex")
+	navigationStyle.Set("align-items" /*      */, "center")
+	navigationStyle.Set("background-color" /* */, "var(--rh-color-surface-darkest)")
+	navigationStyle.Set("color" /*            */, "var(--rh-color-text-primary-on-dark)")
 
 	return navigation
 }
