@@ -70,5 +70,8 @@ func createNavigationText() js.Value {
 	navigationText := _document.Call("createElement", "h2")
 	navigationText.Set("innerHTML", "DummyAI")
 
+	navigationTextStyle := navigationText.Get("style")
+	navigationTextStyle.Set("margin" /* */, "0 var(--rh-space-xl)")
+
 	return navigationText
 }
