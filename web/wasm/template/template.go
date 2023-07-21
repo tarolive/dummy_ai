@@ -37,10 +37,11 @@ func createNavigation() js.Value {
 
 	navigationStyle := navigation.Get("style")
 	navigationStyle.Set("position" /* */, "fixed")
-	navigationStyle.Set("top" /*      */, "0")
-	navigationStyle.Set("right" /*    */, "0")
-	navigationStyle.Set("left" /*     */, "0")
+	navigationStyle.Set("top" /*      */, 0)
+	navigationStyle.Set("right" /*    */, 0)
+	navigationStyle.Set("left" /*     */, 0)
 	navigationStyle.Set("height" /*   */, "72px")
+	navigationStyle.Set("padding" /*  */, "0 var(--rh-space-xl)")
 
 	return navigation
 }
