@@ -57,5 +57,9 @@ func createNavigationImage() js.Value {
 	navigationImage.Set("src", "/logo.svg")
 	navigationImage.Set("alt", "")
 
+	navigationImageStyle := navigationImage.Get("style")
+	navigationImageStyle.Set("width" /*  */, "var(--rh-space-2xl)")
+	navigationImageStyle.Set("height" /* */, "var(--rh-space-2xl)")
+
 	return navigationImage
 }
