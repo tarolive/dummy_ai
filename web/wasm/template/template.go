@@ -9,10 +9,6 @@ import (
 )
 
 var (
-	Language = template_util.Language()
-)
-
-var (
 	_window   = js.Global()
 	_document = _window.Get("document")
 )
@@ -20,7 +16,7 @@ var (
 func CreatePage() js.Value {
 
 	html := _window.Get("documentElement")
-	html.Set("lang", Language)
+	html.Set("lang", template_util.Language())
 
 	page := _document.Call("createElement", "div")
 
