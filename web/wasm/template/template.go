@@ -34,5 +34,13 @@ func CreatePage() js.Value {
 func createNavigation() js.Value {
 
 	navigation := _document.Call("createElement", "div")
+
+	navigationStyle := navigation.Get("style")
+	navigationStyle.Set("position" /* */, "fixed")
+	navigationStyle.Set("top" /*      */, "0")
+	navigationStyle.Set("right" /*    */, "0")
+	navigationStyle.Set("left" /*     */, "0")
+	navigationStyle.Set("height" /*   */, "72px")
+
 	return navigation
 }
