@@ -35,6 +35,7 @@ func createNavigation() js.Value {
 
 	navigation := _document.Call("createElement", "div")
 	navigation.Call("appendChild", createNavigationImage())
+	navigation.Call("appendChild", createNavigationText())
 
 	navigationStyle := navigation.Get("style")
 	navigationStyle.Set("position" /*         */, "fixed")
@@ -62,4 +63,12 @@ func createNavigationImage() js.Value {
 	navigationImageStyle.Set("height" /* */, "var(--rh-space-2xl)")
 
 	return navigationImage
+}
+
+func createNavigationText() js.Value {
+
+	navigationText := _document.Call("createElement", "h2")
+	navigationText.Set("innerHTML", "DummyAI")
+
+	return navigationText
 }
