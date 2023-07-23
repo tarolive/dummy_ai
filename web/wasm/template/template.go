@@ -20,6 +20,13 @@ func CreatePage() js.Value {
 
 	page := _document.Call("createElement", "div")
 
+	pageStyle := page.Get("style")
+	pageStyle.Set("position" /* */, "fixed")
+	pageStyle.Set("top" /*      */, "72px")
+	pageStyle.Set("right" /*    */, 0)
+	pageStyle.Set("bottom" /*   */, 0)
+	pageStyle.Set("left" /*     */, 0)
+
 	body := _document.Get("body")
 	body.Call("appendChild", createNavigation())
 	body.Call("appendChild", page)
