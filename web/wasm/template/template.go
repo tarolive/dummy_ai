@@ -15,7 +15,7 @@ var (
 
 func CreatePage() js.Value {
 
-	html := _window.Get("documentElement")
+	html := _document.Get("documentElement")
 	html.Set("lang", template_util.Language())
 
 	page := _document.Call("createElement", "div")
