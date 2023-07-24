@@ -9,14 +9,29 @@ import (
 )
 
 var (
+	Language = template_util.Language()
+)
+
+var (
 	_window   = js.Global()
 	_document = _window.Get("document")
 )
 
-func CreatePage() js.Value {
+func CreateTemplate() js.Value {
 
 	html := _document.Get("documentElement")
-	html.Set("lang", template_util.Language())
+	html.Set("lang", Language)
+
+	page := createPage()
+
+	body := _document.Get("body")
+	body.Call("appendChild", createNavigation())
+	body.Call("appendChild", page)
+
+	return page
+}
+
+func createPage() js.Value {
 
 	page := _document.Call("createElement", "div")
 
@@ -31,10 +46,6 @@ func CreatePage() js.Value {
 	pageStyle.Set("overflow-y" /*       */, "auto")
 	pageStyle.Set("background-color" /* */, "var(--rh-color-surface-lightest)")
 	pageStyle.Set("color" /*            */, "var(--rh-color-text-primary-on-light)")
-
-	body := _document.Get("body")
-	body.Call("appendChild", createNavigation())
-	body.Call("appendChild", page)
 
 	return page
 }
