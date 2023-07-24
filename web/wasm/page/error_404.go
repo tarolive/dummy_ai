@@ -13,6 +13,6 @@ func main() {
 	h2 := js.Global().Get("document").Call("createElement", "h2")
 	h2.Set("innerHTML", "Error 404 - Page Not Found")
 
-	page := template.CreatePage()
+	page := template.CreateTemplate()
 	page.Call("appendChild", h2)
 }
