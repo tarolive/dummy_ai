@@ -8,11 +8,19 @@ import (
 	"dummy_ai/web/wasm/template"
 )
 
+var (
+	_window   = js.Global()
+	_document = _window.Get("document")
+)
+
 func main() {
 
-	h2 := js.Global().Get("document").Call("createElement", "h2")
-	h2.Set("innerHTML", "Hello World, DummyAI! Language: ")
-
 	page := template.CreateTemplate()
-	page.Call("appendChild", h2)
+	page.Call("appendChild", createSearchForm())
+}
+
+func createSearchForm() js.Value {
+
+	searchForm := _document.Call("createElement", "form")
+	return searchForm
 }
