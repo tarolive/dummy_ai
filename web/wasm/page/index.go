@@ -22,5 +22,20 @@ func main() {
 func createSearchForm() js.Value {
 
 	searchForm := _document.Call("createElement", "form")
+	searchForm.Call("appendChild", createSearchInput())
+	searchForm.Call("appendChild", createSearchButton())
+
 	return searchForm
+}
+
+func createSearchInput() js.Value {
+
+	searchInput := _document.Call("createElement", "input")
+	return searchInput
+}
+
+func createSearchButton() js.Value {
+
+	searchButton := _document.Call("createElement", "rh-button")
+	return searchButton
 }
