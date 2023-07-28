@@ -31,6 +31,14 @@ func createSearchForm() js.Value {
 func createSearchInput() js.Value {
 
 	searchInput := _document.Call("createElement", "input")
+	searchInput.Set("type", "search")
+	searchInput.Set("placeholder", "Search...")
+
+	searchInputStyle := searchInput.Get("style")
+	searchInputStyle.Set("height", "36px")
+	searchInputStyle.Set("margin-right", "10px")
+	searchInputStyle.Set("font-size", "1rem")
+
 	return searchInput
 }
 
