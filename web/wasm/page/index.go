@@ -37,5 +37,7 @@ func createSearchInput() js.Value {
 func createSearchButton() js.Value {
 
 	searchButton := _document.Call("createElement", "rh-button")
+	searchButton.Set("innerHTML", "Search")
+
 	return searchButton
 }
