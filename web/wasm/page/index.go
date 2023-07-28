@@ -25,6 +25,9 @@ func createSearchForm() js.Value {
 	searchForm.Call("appendChild", createSearchInput())
 	searchForm.Call("appendChild", createSearchButton())
 
+	searchFormStyle := searchForm.Get("style")
+	searchFormStyle.Set("display" /* */, "flex")
+
 	return searchForm
 }
 
@@ -35,6 +38,7 @@ func createSearchInput() js.Value {
 	searchInput.Set("placeholder", "Search...")
 
 	searchInputStyle := searchInput.Get("style")
+	searchInputStyle.Set("flex", 1)
 	searchInputStyle.Set("height", "36px")
 	searchInputStyle.Set("margin-right", "10px")
 	searchInputStyle.Set("font-size", "1rem")
