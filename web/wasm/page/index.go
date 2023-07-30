@@ -38,10 +38,11 @@ func createSearchInput() js.Value {
 	searchInput.Set("placeholder", "Search...")
 
 	searchInputStyle := searchInput.Get("style")
-	searchInputStyle.Set("flex", 1)
-	searchInputStyle.Set("height", "36px")
-	searchInputStyle.Set("margin-right", "10px")
-	searchInputStyle.Set("font-size", "1rem")
+	searchInputStyle.Set("flex" /*         */, 1)
+	searchInputStyle.Set("height" /*       */, "36px")
+	searchInputStyle.Set("margin-right" /* */, "10px")
+	searchInputStyle.Set("font-family" /*  */, "RedHatText")
+	searchInputStyle.Set("font-size" /*    */, "1rem")
 
 	return searchInput
 }
