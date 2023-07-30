@@ -40,9 +40,9 @@ func createSearchInput() js.Value {
 	searchInputStyle := searchInput.Get("style")
 	searchInputStyle.Set("flex" /*         */, 1)
 	searchInputStyle.Set("height" /*       */, "36px")
-	searchInputStyle.Set("margin-right" /* */, "10px")
-	searchInputStyle.Set("font-family" /*  */, "RedHatText")
-	searchInputStyle.Set("font-size" /*    */, "1rem")
+	searchInputStyle.Set("margin-right" /* */, "var(--rh-space-md)")
+	searchInputStyle.Set("font-family" /*  */, "var(--rh-font-family-body-text)")
+	searchInputStyle.Set("font-size" /*    */, "var(--rh-font-size-body-text-md)")
 
 	return searchInput
 }
