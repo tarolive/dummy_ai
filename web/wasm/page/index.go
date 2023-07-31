@@ -17,15 +17,15 @@ var (
 	_messages = map[string]map[string]string{
 		template.ENGLISH: {
 			"searchButton.innerHTML":  "Search",
-			"searchInput.placeholder": "",
+			"searchInput.placeholder": "What are you looking for?",
 		},
 		template.SPANISH: {
 			"searchButton.innerHTML":  "Buscar",
-			"searchInput.placeholder": "",
+			"searchInput.placeholder": "¿Qué estás buscando?",
 		},
 		template.PORTUGUESE: {
 			"searchButton.innerHTML":  "Buscar",
-			"searchInput.placeholder": "",
+			"searchInput.placeholder": "O que você está buscando?",
 		},
 	}[template.Language]
 )
