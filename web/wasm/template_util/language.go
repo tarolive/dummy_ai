@@ -52,9 +52,7 @@ func isSupportedLanguage(language string) bool {
 
 	switch language {
 
-	case ENGLISH:
-	case SPANISH:
-	case PORTUGUESE:
+	case ENGLISH, SPANISH, PORTUGUESE:
 
 		return true
 	}
