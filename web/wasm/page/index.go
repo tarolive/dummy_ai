@@ -35,6 +35,7 @@ func createSearchInput() js.Value {
 
 	searchInput := _document.Call("createElement", "input")
 	searchInput.Set("type", "search")
+	searchInput.Set("danger", "")
 	searchInput.Set("placeholder", "Search...")
 
 	searchInputStyle := searchInput.Get("style")
