@@ -13,6 +13,23 @@ var (
 	_document = _window.Get("document")
 )
 
+var (
+	_messages = map[string]map[string]string{
+		template.ENGLISH: {
+			"searchButton.innerHTML":  "Search",
+			"searchInput.placeholder": "",
+		},
+		template.SPANISH: {
+			"searchButton.innerHTML":  "Buscar",
+			"searchInput.placeholder": "",
+		},
+		template.PORTUGUESE: {
+			"searchButton.innerHTML":  "Buscar",
+			"searchInput.placeholder": "",
+		},
+	}[template.Language]
+)
+
 func main() {
 
 	page := template.CreateTemplate()
@@ -35,7 +52,7 @@ func createSearchInput() js.Value {
 
 	searchInput := _document.Call("createElement", "input")
 	searchInput.Set("type", "search")
-	searchInput.Set("placeholder", "Search...")
+	searchInput.Set("placeholder", _messages["searchInput.placeholder"])
 
 	searchInputStyle := searchInput.Get("style")
 	searchInputStyle.Set("flex" /*         */, 1)
@@ -49,7 +66,7 @@ func createSearchInput() js.Value {
 func createSearchButton() js.Value {
 
 	searchButton := _document.Call("createElement", "rh-button")
-	searchButton.Set("innerHTML", "Search")
+	searchButton.Set("innerHTML", _messages["searchButton.innerHTML"])
 
 	return searchButton
 }
