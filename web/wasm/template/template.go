@@ -8,6 +8,12 @@ import (
 	"dummy_ai/web/wasm/template_util"
 )
 
+const (
+	ENGLISH    = template_util.ENGLISH
+	SPANISH    = template_util.SPANISH
+	PORTUGUESE = template_util.PORTUGUESE
+)
+
 var (
 	Language = template_util.Language()
 )
