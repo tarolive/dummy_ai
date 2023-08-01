@@ -33,12 +33,12 @@ var (
 func main() {
 
 	page := template.CreateTemplate()
-	page.Call("appendChild", createSearchForm())
+	page.Call("appendChild", createSearch())
 }
 
-func createSearchForm() js.Value {
+func createSearch() js.Value {
 
-	searchForm := _document.Call("createElement", "form")
+	searchForm := _document.Call("createElement", "div")
 	searchForm.Call("appendChild", createSearchInput())
 	searchForm.Call("appendChild", createSearchButton())
 
