@@ -38,14 +38,14 @@ func main() {
 
 func createSearchBar() js.Value {
 
-	searchForm := _document.Call("createElement", "div")
-	searchForm.Call("appendChild", createSearchBarInput())
-	searchForm.Call("appendChild", createSearchBarButton())
+	searchBar := _document.Call("createElement", "div")
+	searchBar.Call("appendChild", createSearchBarInput())
+	searchBar.Call("appendChild", createSearchBarButton())
 
-	searchFormStyle := searchForm.Get("style")
-	searchFormStyle.Set("display" /* */, "flex")
+	searchBarStyle := searchBar.Get("style")
+	searchBarStyle.Set("display" /* */, "flex")
 
-	return searchForm
+	return searchBar
 }
 
 func createSearchBarInput() js.Value {
