@@ -60,7 +60,8 @@ func createSearchBarInput() js.Value {
 	searchInputStyle.Set("padding" /*      */, "var(--rh-space-sm) var(--rh-space-md)")
 	searchInputStyle.Set("font-family" /*  */, "var(--rh-font-family-body-text)")
 	searchInputStyle.Set("font-size" /*    */, "var(--rh-font-size-body-text-md)")
-	searchInputStyle.Set("border" /*       */, "var(--rh-border-width-sm) solid")
+	searchInputStyle.Set("border-style" /* */, "solid")
+	searchInputStyle.Set("border-width" /* */, "var(--rh-border-width-sm)")
 	searchInputStyle.Set("border-color" /* */, "#f0f0f0 #f0f0f0 #8a8d90 #f0f0f0")
 
 	return searchInput
