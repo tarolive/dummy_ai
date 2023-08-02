@@ -44,6 +44,7 @@ func createSearchBar() js.Value {
 
 	searchBarStyle := searchBar.Get("style")
 	searchBarStyle.Set("display" /* */, "flex")
+	searchBarStyle.Set("gap" /*     */, "var(--rh-space-md)")
 
 	return searchBar
 }
@@ -56,7 +57,6 @@ func createSearchBarInput() js.Value {
 
 	searchInputStyle := searchInput.Get("style")
 	searchInputStyle.Set("flex" /*         */, 1)
-	searchInputStyle.Set("margin-right" /* */, "var(--rh-space-md)")
 	searchInputStyle.Set("padding" /*      */, "var(--rh-space-sm) var(--rh-space-md)")
 	searchInputStyle.Set("font-family" /*  */, "var(--rh-font-family-body-text)")
 	searchInputStyle.Set("font-size" /*    */, "var(--rh-font-size-body-text-md)")
