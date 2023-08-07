@@ -28,16 +28,16 @@ func CreateTemplate() js.Value {
 	html := _document.Get("documentElement")
 	html.Set("lang", Language)
 
-	page := createPage()
+	page := _createPage()
 
 	body := _document.Get("body")
-	body.Call("appendChild", createNavigation())
+	body.Call("appendChild", _createNavigation())
 	body.Call("appendChild", page)
 
 	return page
 }
 
-func createPage() js.Value {
+func _createPage() js.Value {
 
 	page := _document.Call("createElement", "div")
 
@@ -56,11 +56,11 @@ func createPage() js.Value {
 	return page
 }
 
-func createNavigation() js.Value {
+func _createNavigation() js.Value {
 
 	navigation := _document.Call("createElement", "div")
-	navigation.Call("appendChild", createNavigationImage())
-	navigation.Call("appendChild", createNavigationText())
+	navigation.Call("appendChild", _createNavigationImage())
+	navigation.Call("appendChild", _createNavigationText())
 
 	navigationStyle := navigation.Get("style")
 	navigationStyle.Set("position" /*         */, "fixed")
@@ -77,7 +77,7 @@ func createNavigation() js.Value {
 	return navigation
 }
 
-func createNavigationImage() js.Value {
+func _createNavigationImage() js.Value {
 
 	navigationImage := _document.Call("createElement", "img")
 	navigationImage.Set("src", "/logo.svg")
@@ -90,7 +90,7 @@ func createNavigationImage() js.Value {
 	return navigationImage
 }
 
-func createNavigationText() js.Value {
+func _createNavigationText() js.Value {
 
 	navigationText := _document.Call("createElement", "h2")
 	navigationText.Set("innerHTML", "DummyAI")
