@@ -18,28 +18,23 @@ var (
 	Language = template_util.Language()
 )
 
-var (
-	_window   = js.Global()
-	_document = _window.Get("document")
-)
-
 func CreateTemplate() js.Value {
 
-	html := _document.Get("documentElement")
+	html := template_util.Document.Get("documentElement")
 	html.Set("lang", Language)
 
-	page := _createPage()
+	page := createPage()
 
-	body := _document.Get("body")
-	body.Call("appendChild", _createNavigation())
+	body := template_util.Document.Get("body")
+	body.Call("appendChild", createNavigation())
 	body.Call("appendChild", page)
 
 	return page
 }
 
-func _createPage() js.Value {
+func createPage() js.Value {
 
-	page := _document.Call("createElement", "div")
+	page := template_util.Document.Call("createElement", "div")
 
 	pageStyle := page.Get("style")
 	pageStyle.Set("position" /*         */, "fixed")
@@ -56,11 +51,11 @@ func _createPage() js.Value {
 	return page
 }
 
-func _createNavigation() js.Value {
+func createNavigation() js.Value {
 
-	navigation := _document.Call("createElement", "div")
-	navigation.Call("appendChild", _createNavigationImage())
-	navigation.Call("appendChild", _createNavigationText())
+	navigation := template_util.Document.Call("createElement", "div")
+	navigation.Call("appendChild", createNavigationImage())
+	navigation.Call("appendChild", createNavigationText())
 
 	navigationStyle := navigation.Get("style")
 	navigationStyle.Set("position" /*         */, "fixed")
@@ -77,9 +72,9 @@ func _createNavigation() js.Value {
 	return navigation
 }
 
-func _createNavigationImage() js.Value {
+func createNavigationImage() js.Value {
 
-	navigationImage := _document.Call("createElement", "img")
+	navigationImage := template_util.Document.Call("createElement", "img")
 	navigationImage.Set("src", "/logo.svg")
 	navigationImage.Set("alt", "")
 
@@ -90,9 +85,9 @@ func _createNavigationImage() js.Value {
 	return navigationImage
 }
 
-func _createNavigationText() js.Value {
+func createNavigationText() js.Value {
 
-	navigationText := _document.Call("createElement", "h2")
+	navigationText := template_util.Document.Call("createElement", "h2")
 	navigationText.Set("innerHTML", "DummyAI")
 
 	navigationTextStyle := navigationText.Get("style")
