@@ -32,8 +32,7 @@ var (
 
 func main() {
 
-	page := template.CreateTemplate()
-	page.Call("appendChild", _createSearchBar())
+	template.Page.Call("appendChild", _createSearchBar())
 }
 
 func _createSearchBar() js.Value {
