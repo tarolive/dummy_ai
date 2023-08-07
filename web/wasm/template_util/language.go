@@ -1,29 +1,19 @@
 package template_util
 
-import (
-	"syscall/js"
-)
-
 const (
 	ENGLISH    = "en"
 	SPANISH    = "es"
 	PORTUGUESE = "pt"
 )
 
-var (
-	window       = js.Global()
-	localStorage = window.Get("localStorage")
-	navigator    = window.Get("navigator")
-)
-
 func Language() string {
 
-	if language := localStorage.Call("getItem", "language").String(); isSupportedLanguage(language) {
+	if language := LocalStorage.Call("getItem", "language").String(); isSupportedLanguage(language) {
 
 		return language
 	}
 
-	if language := navigator.Get("language").String(); language != "" {
+	if language := Navigator.Get("language").String(); language != "" {
 
 		if len(language) > 2 {
 
@@ -45,7 +35,7 @@ func Language() string {
 
 func SetLanguage(language string) {
 
-	localStorage.Call("setItem", "language", language)
+	LocalStorage.Call("setItem", "language", language)
 }
 
 func isSupportedLanguage(language string) bool {
