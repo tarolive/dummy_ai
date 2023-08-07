@@ -4,23 +4,15 @@ import (
 	"syscall/js"
 )
 
-import (
-	"dummy_ai/web/wasm/template_util"
-)
-
 const (
 	ENGLISH    = "en"
 	SPANISH    = "es"
 	PORTUGUESE = "pt"
 )
 
-var (
-	Language = template_util.Language()
-)
-
 func CreateTemplate() js.Value {
 
-	DocumentElement.Set("lang", Language)
+	DocumentElement.Set("lang", "en")
 
 	page := createPage()
 
