@@ -11,26 +11,26 @@ const (
 )
 
 var (
-	_window       = js.Global()
-	_localStorage = _window.Get("localStorage")
-	_navigator    = _window.Get("navigator")
+	window       = js.Global()
+	localStorage = window.Get("localStorage")
+	navigator    = window.Get("navigator")
 )
 
 func Language() string {
 
-	if language := _localStorage.Call("getItem", "language").String(); _isSupportedLanguage(language) {
+	if language := localStorage.Call("getItem", "language").String(); isSupportedLanguage(language) {
 
 		return language
 	}
 
-	if language := _navigator.Get("language").String(); language != "" {
+	if language := navigator.Get("language").String(); language != "" {
 
 		if len(language) > 2 {
 
 			language = language[:2]
 		}
 
-		if _isSupportedLanguage(language) {
+		if isSupportedLanguage(language) {
 
 			SetLanguage(language)
 			return language
@@ -45,10 +45,10 @@ func Language() string {
 
 func SetLanguage(language string) {
 
-	_localStorage.Call("setItem", "language", language)
+	localStorage.Call("setItem", "language", language)
 }
 
-func _isSupportedLanguage(language string) bool {
+func isSupportedLanguage(language string) bool {
 
 	switch language {
 
