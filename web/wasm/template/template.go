@@ -9,9 +9,9 @@ import (
 )
 
 const (
-	ENGLISH    = template_util.ENGLISH
-	SPANISH    = template_util.SPANISH
-	PORTUGUESE = template_util.PORTUGUESE
+	ENGLISH    = "en"
+	SPANISH    = "es"
+	PORTUGUESE = "pt"
 )
 
 var (
@@ -20,21 +20,19 @@ var (
 
 func CreateTemplate() js.Value {
 
-	html := template_util.DocumentElement
-	html.Set("lang", Language)
+	DocumentElement.Set("lang", Language)
 
 	page := createPage()
 
-	body := template_util.Body
-	body.Call("appendChild", createNavigation())
-	body.Call("appendChild", page)
+	Body.Call("appendChild", createNavigation())
+	Body.Call("appendChild", page)
 
 	return page
 }
 
 func createPage() js.Value {
 
-	page := template_util.Document.Call("createElement", "div")
+	page := Document.Call("createElement", "div")
 
 	pageStyle := page.Get("style")
 	pageStyle.Set("position" /*         */, "fixed")
@@ -53,7 +51,7 @@ func createPage() js.Value {
 
 func createNavigation() js.Value {
 
-	navigation := template_util.Document.Call("createElement", "div")
+	navigation := Document.Call("createElement", "div")
 	navigation.Call("appendChild", createNavigationImage())
 	navigation.Call("appendChild", createNavigationText())
 
@@ -74,7 +72,7 @@ func createNavigation() js.Value {
 
 func createNavigationImage() js.Value {
 
-	navigationImage := template_util.Document.Call("createElement", "img")
+	navigationImage := Document.Call("createElement", "img")
 	navigationImage.Set("src", "/logo.svg")
 	navigationImage.Set("alt", "")
 
@@ -87,7 +85,7 @@ func createNavigationImage() js.Value {
 
 func createNavigationText() js.Value {
 
-	navigationText := template_util.Document.Call("createElement", "h2")
+	navigationText := Document.Call("createElement", "h2")
 	navigationText.Set("innerHTML", "DummyAI")
 
 	navigationTextStyle := navigationText.Get("style")
