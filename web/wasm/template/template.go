@@ -4,22 +4,46 @@ import (
 	"syscall/js"
 )
 
+var (
+	Window = js.Global()
+)
+
+var (
+	Document        = Window.Get("document")
+	DocumentElement = Document.Get("documentElement")
+	Head            = Document.Get("head")
+	Body            = Document.Get("body")
+)
+
+var (
+	SessionStorage = Window.Get("sessionStorage")
+	LocalStorage   = Window.Get("localStorage")
+)
+
+var (
+	Navigator = Window.Get("navigator")
+)
+
+var (
+	Page = createPage()
+)
+
 const (
 	ENGLISH    = "en"
 	SPANISH    = "es"
 	PORTUGUESE = "pt"
 )
 
-func CreateTemplate() js.Value {
+var (
+	Language = ENGLISH
+)
 
-	DocumentElement.Set("lang", "en")
+func init() {
 
-	page := createPage()
+	DocumentElement.Set("lang", Language)
 
 	Body.Call("appendChild", createNavigation())
-	Body.Call("appendChild", page)
-
-	return page
+	Body.Call("appendChild", Page)
 }
 
 func createPage() js.Value {
