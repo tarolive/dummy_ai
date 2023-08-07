@@ -20,12 +20,12 @@ var (
 
 func CreateTemplate() js.Value {
 
-	html := template_util.Document.Get("documentElement")
+	html := template_util.DocumentElement
 	html.Set("lang", Language)
 
 	page := createPage()
 
-	body := template_util.Document.Get("body")
+	body := template_util.Body
 	body.Call("appendChild", createNavigation())
 	body.Call("appendChild", page)
 
