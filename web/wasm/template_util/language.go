@@ -18,7 +18,7 @@ var (
 
 func Language() string {
 
-	if language := _localStorage.Call("getItem", "language").String(); isSupportedLanguage(language) {
+	if language := _localStorage.Call("getItem", "language").String(); _isSupportedLanguage(language) {
 
 		return language
 	}
@@ -30,7 +30,7 @@ func Language() string {
 			language = language[:2]
 		}
 
-		if isSupportedLanguage(language) {
+		if _isSupportedLanguage(language) {
 
 			SetLanguage(language)
 			return language
@@ -48,7 +48,7 @@ func SetLanguage(language string) {
 	_localStorage.Call("setItem", "language", language)
 }
 
-func isSupportedLanguage(language string) bool {
+func _isSupportedLanguage(language string) bool {
 
 	switch language {
 
