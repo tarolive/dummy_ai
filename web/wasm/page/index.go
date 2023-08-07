@@ -33,14 +33,14 @@ var (
 func main() {
 
 	page := template.CreateTemplate()
-	page.Call("appendChild", createSearchBar())
+	page.Call("appendChild", _createSearchBar())
 }
 
-func createSearchBar() js.Value {
+func _createSearchBar() js.Value {
 
 	searchBar := _document.Call("createElement", "div")
-	searchBar.Call("appendChild", createSearchBarInput())
-	searchBar.Call("appendChild", createSearchBarButton())
+	searchBar.Call("appendChild", _createSearchBarInput())
+	searchBar.Call("appendChild", _createSearchBarButton())
 
 	searchBarStyle := searchBar.Get("style")
 	searchBarStyle.Set("display" /* */, "flex")
@@ -49,7 +49,7 @@ func createSearchBar() js.Value {
 	return searchBar
 }
 
-func createSearchBarInput() js.Value {
+func _createSearchBarInput() js.Value {
 
 	searchInput := _document.Call("createElement", "input")
 	searchInput.Set("type", "search")
@@ -67,7 +67,7 @@ func createSearchBarInput() js.Value {
 	return searchInput
 }
 
-func createSearchBarButton() js.Value {
+func _createSearchBarButton() js.Value {
 
 	searchButton := _document.Call("createElement", "rh-button")
 	searchButton.Set("innerHTML", _messages["searchButton.innerHTML"])
