@@ -4,12 +4,6 @@ import (
 	"syscall/js"
 )
 
-const (
-	ENGLISH    = "en"
-	SPANISH    = "es"
-	PORTUGUESE = "pt"
-)
-
 var (
 	page = createPage()
 )
@@ -22,11 +16,6 @@ func init() {
 	body := js.Global().Get("document").Get("body")
 	body.Call("appendChild", createNavigation())
 	body.Call("appendChild", page)
-}
-
-func Language() string {
-
-	return ENGLISH
 }
 
 func Page() js.Value {
