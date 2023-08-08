@@ -4,6 +4,12 @@ import (
 	"syscall/js"
 )
 
+const (
+	ENGLISH    = "en"
+	SPANISH    = "es"
+	PORTUGUESE = "pt"
+)
+
 var (
 	page = createPage()
 )
@@ -20,7 +26,7 @@ func init() {
 
 func Language() string {
 
-	return "en"
+	return ENGLISH
 }
 
 func Page() js.Value {
