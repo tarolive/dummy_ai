@@ -9,11 +9,6 @@ import (
 )
 
 var (
-	_window   = js.Global()
-	_document = _window.Get("document")
-)
-
-var (
 	_messages = map[string]map[string]string{
 		template.ENGLISH: {
 			"searchButton.innerHTML":  "Search",
@@ -37,7 +32,7 @@ func main() {
 
 func _createSearchBar() js.Value {
 
-	searchBar := _document.Call("createElement", "div")
+	searchBar := js.Global().Get("document").Call("createElement", "div")
 	searchBar.Call("appendChild", _createSearchBarInput())
 	searchBar.Call("appendChild", _createSearchBarButton())
 
@@ -50,7 +45,7 @@ func _createSearchBar() js.Value {
 
 func _createSearchBarInput() js.Value {
 
-	searchInput := _document.Call("createElement", "input")
+	searchInput := js.Global().Get("document").Call("createElement", "input")
 	searchInput.Set("type", "search")
 	searchInput.Set("placeholder", _messages["searchInput.placeholder"])
 
@@ -68,7 +63,7 @@ func _createSearchBarInput() js.Value {
 
 func _createSearchBarButton() js.Value {
 
-	searchButton := _document.Call("createElement", "rh-button")
+	searchButton := js.Global().Get("document").Call("createElement", "rh-button")
 	searchButton.Set("innerHTML", _messages["searchButton.innerHTML"])
 
 	return searchButton
