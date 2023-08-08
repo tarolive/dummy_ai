@@ -5,50 +5,32 @@ import (
 )
 
 var (
-	Window = js.Global()
-)
-
-var (
-	Document        = Window.Get("document")
-	DocumentElement = Document.Get("documentElement")
-	Head            = Document.Get("head")
-	Body            = Document.Get("body")
-)
-
-var (
-	SessionStorage = Window.Get("sessionStorage")
-	LocalStorage   = Window.Get("localStorage")
-)
-
-var (
-	Navigator = Window.Get("navigator")
-)
-
-var (
-	Page = createPage()
-)
-
-const (
-	ENGLISH    = "en"
-	SPANISH    = "es"
-	PORTUGUESE = "pt"
-)
-
-var (
-	Language = ENGLISH
+	page = createPage()
 )
 
 func init() {
 
-	DocumentElement.Set("lang", Language)
+	html := js.Global().Get("document").Get("documentElement")
+	html.Set("lang", Language())
 
-	Body.Call("appendChild", createNavigation())
-	Body.Call("appendChild", Page)
+	body := js.Global().Get("document").Get("body")
+	body.Call("appendChild", createNavigation())
+	body.Call("appendChild", page)
+}
+
+func Language() string {
+
+	return "en"
+}
+
+func Page() js.Value {
+
+	return page
 }
 
 func createPage() js.Value {
 
-	page := Document.Call("createElement", "div")
+	page := js.Global().Get("document").Call("createElement", "div")
 
 	pageStyle := page.Get("style")
 	pageStyle.Set("position" /*         */, "fixed")
@@ -67,7 +49,7 @@ func createPage() js.Value {
 
 func createNavigation() js.Value {
 
-	navigation := Document.Call("createElement", "div")
+	navigation := js.Global().Get("document").Call("createElement", "div")
 	navigation.Call("appendChild", createNavigationImage())
 	navigation.Call("appendChild", createNavigationText())
 
@@ -88,7 +70,7 @@ func createNavigation() js.Value {
 
 func createNavigationImage() js.Value {
 
-	navigationImage := Document.Call("createElement", "img")
+	navigationImage := js.Global().Get("document").Call("createElement", "img")
 	navigationImage.Set("src", "/logo.svg")
 	navigationImage.Set("alt", "")
 
@@ -101,7 +83,7 @@ func createNavigationImage() js.Value {
 
 func createNavigationText() js.Value {
 
-	navigationText := Document.Call("createElement", "h2")
+	navigationText := js.Global().Get("document").Call("createElement", "h2")
 	navigationText.Set("innerHTML", "DummyAI")
 
 	navigationTextStyle := navigationText.Get("style")
