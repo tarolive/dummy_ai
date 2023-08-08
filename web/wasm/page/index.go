@@ -27,12 +27,12 @@ var (
 			"searchButton.innerHTML":  "Buscar",
 			"searchInput.placeholder": "O que você está buscando?",
 		},
-	}[template.Language]
+	}[template.Language()]
 )
 
 func main() {
 
-	template.Page.Call("appendChild", _createSearchBar())
+	template.Page().Call("appendChild", _createSearchBar())
 }
 
 func _createSearchBar() js.Value {
