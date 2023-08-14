@@ -5,8 +5,8 @@ import (
 )
 
 var (
-	navigator     = createNavigator()
-	pageContainer = createPageContainer()
+	navigator = createNavigator()
+	page      = createPage()
 )
 
 func init() {
@@ -17,9 +17,9 @@ func Navigator() js.Value {
 	return navigator
 }
 
-func PageContainer() js.Value {
+func Page() js.Value {
 
-	return pageContainer
+	return page
 }
 
 func createNavigator() js.Value {
@@ -27,7 +27,7 @@ func createNavigator() js.Value {
 	return js.Value{}
 }
 
-func createPageContainer() js.Value {
+func createPage() js.Value {
 
 	return js.Value{}
 }
