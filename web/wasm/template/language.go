@@ -5,9 +5,13 @@ import (
 )
 
 const (
-	ENGLISH    = "en"
-	SPANISH    = "es"
-	PORTUGUESE = "pt"
+	English    = "en"
+	Spanish    = "es"
+	Portuguese = "pt"
+)
+
+const (
+	DefaultLanguage = English
 )
 
 func Language() string {
@@ -31,7 +35,7 @@ func Language() string {
 		}
 	}
 
-	language := ENGLISH
+	language := DefaultLanguage
 
 	SetLanguage(language)
 	return language
@@ -46,7 +50,7 @@ func isSupportedLanguage(language string) bool {
 
 	switch language {
 
-	case ENGLISH, SPANISH, PORTUGUESE:
+	case English, Spanish, Portuguese:
 
 		return true
 
