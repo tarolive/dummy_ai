@@ -10,15 +10,15 @@ import (
 
 var (
 	_messages = map[string]map[string]string{
-		template.ENGLISH: {
+		template.English: {
 			"searchButton.innerHTML":  "Search",
 			"searchInput.placeholder": "What are you looking for?",
 		},
-		template.SPANISH: {
+		template.Spanish: {
 			"searchButton.innerHTML":  "Buscar",
 			"searchInput.placeholder": "¿Qué estás buscando?",
 		},
-		template.PORTUGUESE: {
+		template.Portuguese: {
 			"searchButton.innerHTML":  "Buscar",
 			"searchInput.placeholder": "O que você está buscando?",
 		},
