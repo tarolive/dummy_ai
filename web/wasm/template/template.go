@@ -5,16 +5,16 @@ import (
 )
 
 var (
-	navigator = createNavigator()
-	page      = createPage()
+	navigation = createNavigation()
+	page       = createPage()
 )
 
 func init() {
 }
 
-func Navigator() js.Value {
+func Navigation() js.Value {
 
-	return navigator
+	return navigation
 }
 
 func Page() js.Value {
@@ -22,7 +22,7 @@ func Page() js.Value {
 	return page
 }
 
-func createNavigator() js.Value {
+func createNavigation() js.Value {
 
 	return js.Value{}
 }
