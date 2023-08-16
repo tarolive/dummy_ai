@@ -11,6 +11,11 @@ var (
 )
 
 func init() {
+
+	js.Global().Get("document").Get("documentElement").Set("lang", Language())
+	js.Global().Get("document").Get("body").Call("appendChild", navigation)
+	js.Global().Get("document").Get("body").Call("appendChild", drawer)
+	js.Global().Get("document").Get("body").Call("appendChild", page)
 }
 
 func Navigation() js.Value {
