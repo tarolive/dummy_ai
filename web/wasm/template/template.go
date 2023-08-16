@@ -36,6 +36,14 @@ func Page() js.Value {
 func createNavigation() js.Value {
 
 	navigation := js.Global().Get("document").Call("createElement", "div")
+	navigation.Get("style").Set("position" /*         */, "fixed")
+	navigation.Get("style").Set("top" /*              */, "0")
+	navigation.Get("style").Set("right" /*            */, "0")
+	navigation.Get("style").Set("left" /*             */, "0")
+	navigation.Get("style").Set("height" /*           */, "72px")
+	navigation.Get("style").Set("background-color" /* */, "var(--rh-color-surface-darkest)")
+	navigation.Get("style").Set("color" /*            */, "var(--rh-color-text-primary-on-dark)")
+
 	return navigation
 }
 
