@@ -23,6 +23,8 @@ func Run() {
 	serveFile("/favicon.svg" /*                 */, "./web/static/img/favicon/favicon.svg")
 	serveFile("/favicon_192x192.png" /*         */, "./web/static/img/favicon/favicon_192x192.png")
 	serveFile("/favicon_512x512.png" /*         */, "./web/static/img/favicon/favicon_512x512.png")
+	serveFile("/menu_close_white.svg" /*        */, "./web/static/img/icon/menu_close_white.svg")
+	serveFile("/menu_open_white.svg" /*         */, "./web/static/img/icon/menu_open_white.svg")
 	serveFile("/logo.svg" /*                    */, "./web/static/img/logo/logo.svg")
 	serveFile("/logo_white.svg" /*              */, "./web/static/img/logo/logo_white.svg")
 	serveFile("/rhds.min.css" /*                */, "./web/static/lib/rhds/rhds.min.css")
