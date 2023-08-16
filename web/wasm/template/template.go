@@ -5,9 +5,10 @@ import (
 )
 
 var (
-	navigation = createNavigation()
-	drawer     = createDrawer()
-	page       = createPage()
+	navigation           = createNavigation()
+	navigationMenuButton = createNavigationMenuButton()
+	drawer               = createDrawer()
+	page                 = createPage()
 )
 
 func init() {
@@ -21,6 +22,11 @@ func init() {
 func Navigation() js.Value {
 
 	return navigation
+}
+
+func NavigationMenuButton() js.Value {
+
+	return navigationMenuButton
 }
 
 func Drawer() js.Value {
@@ -41,10 +47,25 @@ func createNavigation() js.Value {
 	navigation.Get("style").Set("right" /*            */, 0)
 	navigation.Get("style").Set("left" /*             */, 0)
 	navigation.Get("style").Set("height" /*           */, "72px")
+	navigation.Get("style").Set("padding" /*          */, "0 var(--rh-space-xl)")
+	navigation.Get("style").Set("display" /*          */, "flex")
+	navigation.Get("style").Set("align-items" /*      */, "center")
 	navigation.Get("style").Set("background-color" /* */, "var(--rh-color-surface-darkest)")
 	navigation.Get("style").Set("color" /*            */, "var(--rh-color-text-primary-on-dark)")
+	navigation.Call("appendChild", navigationMenuButton)
 
 	return navigation
+}
+
+func createNavigationMenuButton() js.Value {
+
+	navigationMenuButton := js.Global().Get("document").Call("createElement", "img")
+	navigationMenuButton.Get("style").Set("width", "32px")
+	navigationMenuButton.Get("style").Set("height", "32px")
+	navigationMenuButton.Set("src", "/menu_open_white.svg")
+	navigationMenuButton.Set("alt", "")
+
+	return navigationMenuButton
 }
 
 func createDrawer() js.Value {
