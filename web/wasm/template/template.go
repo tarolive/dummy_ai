@@ -50,6 +50,15 @@ func createNavigation() js.Value {
 func createDrawer() js.Value {
 
 	drawer := js.Global().Get("document").Call("createElement", "div")
+	drawer.Get("style").Set("position" /*         */, "fixed")
+	drawer.Get("style").Set("top" /*              */, "72px")
+	drawer.Get("style").Set("bottom" /*           */, 0)
+	drawer.Get("style").Set("left" /*             */, 0)
+	drawer.Get("style").Set("width" /*            */, "100%")
+	drawer.Get("style").Set("max-width" /*        */, "600px")
+	drawer.Get("style").Set("background-color" /* */, "var(--rh-color-surface-darkest)")
+	drawer.Get("style").Set("color" /*            */, "var(--rh-color-text-primary-on-dark)")
+
 	return drawer
 }
 
