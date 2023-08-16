@@ -30,15 +30,18 @@ func Page() js.Value {
 
 func createNavigation() js.Value {
 
-	return js.Value{}
+	navigation := js.Global().Get("document").Call("createElement", "div")
+	return navigation
 }
 
 func createDrawer() js.Value {
 
-	return js.Value{}
+	drawer := js.Global().Get("document").Call("createElement", "div")
+	return drawer
 }
 
 func createPage() js.Value {
 
-	return js.Value{}
+	page := js.Global().Get("document").Call("createElement", "div")
+	return page
 }
