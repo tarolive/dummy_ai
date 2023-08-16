@@ -55,8 +55,10 @@ func createDrawer() js.Value {
 	drawer.Get("style").Set("bottom" /*           */, 0)
 	drawer.Get("style").Set("left" /*             */, 0)
 	drawer.Get("style").Set("width" /*            */, "100%")
-	drawer.Get("style").Set("max-width" /*        */, "600px")
-	drawer.Get("style").Set("background-color" /* */, "var(--rh-color-surface-darkest)")
+	drawer.Get("style").Set("max-width" /*        */, "290px")
+	drawer.Get("style").Set("overflow-x" /*       */, "hidden")
+	drawer.Get("style").Set("overflow-y" /*       */, "auto")
+	drawer.Get("style").Set("background-color" /* */, "var(--rh-color-surface-darker)")
 	drawer.Get("style").Set("color" /*            */, "var(--rh-color-text-primary-on-dark)")
 
 	return drawer
