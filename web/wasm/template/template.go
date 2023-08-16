@@ -58,7 +58,7 @@ func createDrawer() js.Value {
 	drawer.Get("style").Set("max-width" /*        */, "290px")
 	drawer.Get("style").Set("overflow-x" /*       */, "hidden")
 	drawer.Get("style").Set("overflow-y" /*       */, "auto")
-	drawer.Get("style").Set("background-color" /* */, "var(--rh-color-surface-darker)")
+	drawer.Get("style").Set("background-color" /* */, "#212427")
 	drawer.Get("style").Set("color" /*            */, "var(--rh-color-text-primary-on-dark)")
 
 	return drawer
@@ -67,5 +67,16 @@ func createDrawer() js.Value {
 func createPage() js.Value {
 
 	page := js.Global().Get("document").Call("createElement", "div")
+	page.Get("style").Set("position" /*         */, "fixed")
+	page.Get("style").Set("top" /*              */, "72px")
+	page.Get("style").Set("right" /*            */, 0)
+	page.Get("style").Set("bottom" /*           */, 0)
+	page.Get("style").Set("left" /*             */, "290px")
+	page.Get("style").Set("padding" /*          */, "var(--rh-space-md)")
+	page.Get("style").Set("overflow-x" /*       */, "hidden")
+	page.Get("style").Set("overflow-y" /*       */, "auto")
+	page.Get("style").Set("background-color" /* */, "var(--rh-color-surface-lightest)")
+	page.Get("style").Set("color" /*            */, "var(--rh-color-text-primary-on-light)")
+
 	return page
 }
