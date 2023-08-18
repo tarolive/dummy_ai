@@ -59,11 +59,20 @@ func createNavigation() js.Value {
 
 func createNavigationMenuButton() js.Value {
 
-	navigationMenuButton := js.Global().Get("document").Call("createElement", "img")
-	navigationMenuButton.Get("style").Set("width", "32px")
-	navigationMenuButton.Get("style").Set("height", "32px")
-	navigationMenuButton.Set("src", "/menu_open_white.svg")
-	navigationMenuButton.Set("alt", "")
+	img := js.Global().Get("document").Call("createElement", "img")
+	img.Get("style").Set("width" /*  */, "var(--rh-size-icon-03)")
+	img.Get("style").Set("height" /* */, "var(--rh-size-icon-03)")
+	img.Set("src", "/menu_open_white.svg")
+	img.Set("alt", "")
+
+	div := js.Global().Get("document").Call("createElement", "div")
+	div.Get("style").Set("width" /*  */, "var(--rh-size-icon-03)")
+	div.Get("style").Set("height" /* */, "var(--rh-size-icon-03)")
+	div.Call("appendChild", img)
+
+	navigationMenuButton := js.Global().Get("document").Call("createElement", "rh-button")
+	navigationMenuButton.Set("variant", "link")
+	navigationMenuButton.Call("appendChild", div)
 
 	return navigationMenuButton
 }
