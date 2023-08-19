@@ -109,8 +109,8 @@ func createNavigationMenuButton() js.Value {
 func createNavigationTitleIcon() js.Value {
 
 	navigationTitleIcon := js.Global().Get("document").Call("createElement", "img")
-	navigationTitleIcon.Get("style").Set("width" /*  */, "var(--rh-size-icon-03)")
-	navigationTitleIcon.Get("style").Set("height" /* */, "var(--rh-size-icon-03)")
+	navigationTitleIcon.Get("style").Set("width" /*  */, "var(--rh-size-icon-02)")
+	navigationTitleIcon.Get("style").Set("height" /* */, "var(--rh-size-icon-02)")
 	navigationTitleIcon.Get("style").Set("margin" /* */, "var(--rh-space-md)")
 	navigationTitleIcon.Set("src", "/logo.svg")
 	navigationTitleIcon.Set("alt", "")
@@ -120,7 +120,7 @@ func createNavigationTitleIcon() js.Value {
 
 func createNavigationTitleText() js.Value {
 
-	navigationTitleText := js.Global().Get("document").Call("createElement", "h2")
+	navigationTitleText := js.Global().Get("document").Call("createElement", "h3")
 	navigationTitleText.Set("innerHTML", "DummyAI")
 
 	return navigationTitleText
