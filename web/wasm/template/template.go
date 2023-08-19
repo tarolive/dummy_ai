@@ -4,20 +4,29 @@ import (
 	"syscall/js"
 )
 
+const (
+	navigationMenuButtonAlt int = iota
+	navigationTitleIconAlt
+	navigationTitleTextText
+)
+
 var (
 	language = Language()
-	messages = map[string]map[string]string{
+	messages = map[string]map[int]string{
 		English: {
-			"navigationMenuButton.alt": "Menu",
-			"navigationTitleText.text": "DummyAI",
+			navigationMenuButtonAlt: "Menu",
+			navigationTitleIconAlt:  "",
+			navigationTitleTextText: "DummyAI",
 		},
 		Spanish: {
-			"navigationMenuButton.alt": "Menu",
-			"navigationTitleText.text": "DummyAI",
+			navigationMenuButtonAlt: "Menu",
+			navigationTitleIconAlt:  "",
+			navigationTitleTextText: "DummyAI",
 		},
 		Portuguese: {
-			"navigationMenuButton.alt": "Menu",
-			"navigationTitleText.text": "DummyAI",
+			navigationMenuButtonAlt: "Menu",
+			navigationTitleIconAlt:  "",
+			navigationTitleTextText: "DummyAI",
 		},
 	}[language]
 )
@@ -95,7 +104,7 @@ func createNavigationMenuButton() js.Value {
 	img.Get("style").Set("width" /*  */, "var(--rh-size-icon-02)")
 	img.Get("style").Set("height" /* */, "var(--rh-size-icon-02)")
 	img.Set("src", "/menu_open_white.svg")
-	img.Set("alt", messages["navigationMenuButton.alt"])
+	img.Set("alt", messages[navigationMenuButtonAlt])
 
 	div := js.Global().Get("document").Call("createElement", "div")
 	div.Get("style").Set("width" /*  */, "var(--rh-size-icon-02)")
@@ -116,7 +125,7 @@ func createNavigationTitleIcon() js.Value {
 	navigationTitleIcon.Get("style").Set("height" /* */, "var(--rh-size-icon-02)")
 	navigationTitleIcon.Get("style").Set("margin" /* */, "var(--rh-space-md)")
 	navigationTitleIcon.Set("src", "/logo.svg")
-	navigationTitleIcon.Set("alt", "")
+	navigationTitleIcon.Set("alt", messages[navigationTitleIconAlt])
 
 	return navigationTitleIcon
 }
@@ -124,7 +133,7 @@ func createNavigationTitleIcon() js.Value {
 func createNavigationTitleText() js.Value {
 
 	navigationTitleText := js.Global().Get("document").Call("createElement", "h3")
-	navigationTitleText.Set("innerHTML", messages["navigationTitleText.text"])
+	navigationTitleText.Set("innerHTML", messages[navigationTitleTextText])
 
 	return navigationTitleText
 }
