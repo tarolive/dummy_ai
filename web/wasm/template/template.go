@@ -7,6 +7,8 @@ import (
 var (
 	navigation           = createNavigation()
 	navigationMenuButton = createNavigationMenuButton()
+	navigationTitleIcon  = createNavigationTitleIcon()
+	navigationTitleText  = createNavigationTitleText()
 	drawer               = createDrawer()
 	page                 = createPage()
 )
@@ -27,6 +29,16 @@ func Navigation() js.Value {
 func NavigationMenuButton() js.Value {
 
 	return navigationMenuButton
+}
+
+func NavigationTitleIcon() js.Value {
+
+	return navigationTitleIcon
+}
+
+func NavigationTitleText() js.Value {
+
+	return navigationTitleText
 }
 
 func Drawer() js.Value {
@@ -53,6 +65,8 @@ func createNavigation() js.Value {
 	navigation.Get("style").Set("background-color" /* */, "var(--rh-color-surface-darkest)")
 	navigation.Get("style").Set("color" /*            */, "var(--rh-color-text-primary-on-dark)")
 	navigation.Call("appendChild", navigationMenuButton)
+	navigation.Call("appendChild", navigationTitleIcon)
+	navigation.Call("appendChild", navigationTitleText)
 
 	return navigation
 }
@@ -75,6 +89,25 @@ func createNavigationMenuButton() js.Value {
 	navigationMenuButton.Call("appendChild", div)
 
 	return navigationMenuButton
+}
+
+func createNavigationTitleIcon() js.Value {
+
+	navigationTitleIcon := js.Global().Get("document").Call("createElement", "img")
+	navigationTitleIcon.Get("style").Set("width" /*  */, "var(--rh-size-icon-03)")
+	navigationTitleIcon.Get("style").Set("height" /* */, "var(--rh-size-icon-03)")
+	navigationTitleIcon.Set("src", "/logo.svg")
+	navigationTitleIcon.Set("alt", "")
+
+	return navigationTitleIcon
+}
+
+func createNavigationTitleText() js.Value {
+
+	navigationTitleText := js.Global().Get("document").Call("createElement", "h2")
+	navigationTitleText.Set("innerHTML", "DummyAI")
+
+	return navigationTitleText
 }
 
 func createDrawer() js.Value {
