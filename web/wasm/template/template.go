@@ -9,12 +9,15 @@ var (
 	messages = map[string]map[string]string{
 		English: {
 			"navigationMenuButton.alt": "Menu",
+			"navigationTitleText.text": "DummyAI",
 		},
 		Spanish: {
 			"navigationMenuButton.alt": "Menu",
+			"navigationTitleText.text": "DummyAI",
 		},
 		Portuguese: {
 			"navigationMenuButton.alt": "Menu",
+			"navigationTitleText.text": "DummyAI",
 		},
 	}[language]
 )
@@ -121,7 +124,7 @@ func createNavigationTitleIcon() js.Value {
 func createNavigationTitleText() js.Value {
 
 	navigationTitleText := js.Global().Get("document").Call("createElement", "h3")
-	navigationTitleText.Set("innerHTML", "DummyAI")
+	navigationTitleText.Set("innerHTML", messages["navigationTitleText.text"])
 
 	return navigationTitleText
 }
