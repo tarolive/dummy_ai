@@ -5,7 +5,7 @@ import (
 )
 
 const (
-	navigationMenuButtonAlt int = iota
+	navigationMenuButtonAlt = iota
 	navigationTitleIconAlt
 	navigationTitleTextText
 )
