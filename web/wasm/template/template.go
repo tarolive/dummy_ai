@@ -5,6 +5,21 @@ import (
 )
 
 var (
+	language = Language()
+	messages = map[string]map[string]string{
+		English: {
+			"navigationMenuButton.alt": "Menu",
+		},
+		Spanish: {
+			"navigationMenuButton.alt": "Menu",
+		},
+		Portuguese: {
+			"navigationMenuButton.alt": "Menu",
+		},
+	}[language]
+)
+
+var (
 	navigation           = createNavigation()
 	navigationMenuButton = createNavigationMenuButton()
 	navigationTitleIcon  = createNavigationTitleIcon()
@@ -15,7 +30,7 @@ var (
 
 func init() {
 
-	js.Global().Get("document").Get("documentElement").Set("lang", Language())
+	js.Global().Get("document").Get("documentElement").Set("lang", language)
 	js.Global().Get("document").Get("body").Call("appendChild", navigation)
 	js.Global().Get("document").Get("body").Call("appendChild", drawer)
 	js.Global().Get("document").Get("body").Call("appendChild", page)
@@ -77,7 +92,7 @@ func createNavigationMenuButton() js.Value {
 	img.Get("style").Set("width" /*  */, "var(--rh-size-icon-02)")
 	img.Get("style").Set("height" /* */, "var(--rh-size-icon-02)")
 	img.Set("src", "/menu_open_white.svg")
-	img.Set("alt", "")
+	img.Set("alt", messages["navigationMenuButton.alt"])
 
 	div := js.Global().Get("document").Call("createElement", "div")
 	div.Get("style").Set("width" /*  */, "var(--rh-size-icon-02)")
