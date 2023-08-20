@@ -7,7 +7,7 @@ import (
 const (
 	navigationMenuButtonAlt = iota
 	navigationTitleIconAlt
-	navigationTitleTextText
+	navigationTitleText
 )
 
 var (
@@ -16,17 +16,17 @@ var (
 		English: {
 			navigationMenuButtonAlt: "Menu",
 			navigationTitleIconAlt:  "",
-			navigationTitleTextText: "DummyAI",
+			navigationTitleText:     "DummyAI",
 		},
 		Spanish: {
 			navigationMenuButtonAlt: "Menu",
 			navigationTitleIconAlt:  "",
-			navigationTitleTextText: "DummyAI",
+			navigationTitleText:     "DummyAI",
 		},
 		Portuguese: {
 			navigationMenuButtonAlt: "Menu",
 			navigationTitleIconAlt:  "",
-			navigationTitleTextText: "DummyAI",
+			navigationTitleText:     "DummyAI",
 		},
 	}[language]
 )
@@ -35,7 +35,7 @@ var (
 	navigation           = createNavigation()
 	navigationMenuButton = createNavigationMenuButton()
 	navigationTitleIcon  = createNavigationTitleIcon()
-	navigationTitleText  = createNavigationTitleText()
+	navigationTitle      = createNavigationTitle()
 	drawer               = createDrawer()
 	page                 = createPage()
 )
@@ -63,9 +63,9 @@ func NavigationTitleIcon() js.Value {
 	return navigationTitleIcon
 }
 
-func NavigationTitleText() js.Value {
+func NavigationTitle() js.Value {
 
-	return navigationTitleText
+	return navigationTitle
 }
 
 func Drawer() js.Value {
@@ -93,7 +93,7 @@ func createNavigation() js.Value {
 	navigation.Get("style").Set("color" /*            */, "var(--rh-color-text-primary-on-dark)")
 	navigation.Call("appendChild", navigationMenuButton)
 	navigation.Call("appendChild", navigationTitleIcon)
-	navigation.Call("appendChild", navigationTitleText)
+	navigation.Call("appendChild", navigationTitle)
 
 	return navigation
 }
@@ -130,12 +130,12 @@ func createNavigationTitleIcon() js.Value {
 	return navigationTitleIcon
 }
 
-func createNavigationTitleText() js.Value {
+func createNavigationTitle() js.Value {
 
-	navigationTitleText := js.Global().Get("document").Call("createElement", "h3")
-	navigationTitleText.Set("innerHTML", messages[navigationTitleTextText])
+	navigationTitle := js.Global().Get("document").Call("createElement", "h3")
+	navigationTitle.Set("innerHTML", messages[navigationTitleText])
 
-	return navigationTitleText
+	return navigationTitle
 }
 
 func createDrawer() js.Value {
