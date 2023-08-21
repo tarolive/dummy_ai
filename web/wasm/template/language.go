@@ -15,10 +15,20 @@ const (
 )
 
 var (
-	language = Language()
+	language = preferredLanguage()
 )
 
 func Language() string {
+
+	return language
+}
+
+func SetLanguage(language string) {
+
+	js.Global().Get("localStorage").Call("setItem", "language", language)
+}
+
+func preferredLanguage() string {
 
 	if language := js.Global().Get("localStorage").Call("getItem", "language").String(); isSupportedLanguage(language) {
 
@@ -43,11 +53,6 @@ func Language() string {
 
 	SetLanguage(language)
 	return language
-}
-
-func SetLanguage(language string) {
-
-	js.Global().Get("localStorage").Call("setItem", "language", language)
 }
 
 func isSupportedLanguage(language string) bool {
