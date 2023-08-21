@@ -11,7 +11,6 @@ const (
 )
 
 var (
-	language = Language()
 	messages = map[string]map[int]string{
 		English: {
 			navigationMenuButtonAlt: "Menu",

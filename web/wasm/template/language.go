@@ -14,6 +14,10 @@ const (
 	DefaultLanguage = English
 )
 
+var (
+	language = Language()
+)
+
 func Language() string {
 
 	if language := js.Global().Get("localStorage").Call("getItem", "language").String(); isSupportedLanguage(language) {
