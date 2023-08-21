@@ -4,32 +4,6 @@ import (
 	"syscall/js"
 )
 
-const (
-	navigationMenuButtonAlt = iota
-	navigationTitleIconAlt
-	navigationTitleText
-)
-
-var (
-	messages = map[string]map[int]string{
-		English: {
-			navigationMenuButtonAlt: "Menu",
-			navigationTitleIconAlt:  "",
-			navigationTitleText:     "DummyAI",
-		},
-		Spanish: {
-			navigationMenuButtonAlt: "Menu",
-			navigationTitleIconAlt:  "",
-			navigationTitleText:     "DummyAI",
-		},
-		Portuguese: {
-			navigationMenuButtonAlt: "Menu",
-			navigationTitleIconAlt:  "",
-			navigationTitleText:     "DummyAI",
-		},
-	}[language]
-)
-
 var (
 	navigation           = createNavigation()
 	navigationMenuButton = createNavigationMenuButton()
@@ -103,7 +77,7 @@ func createNavigationMenuButton() js.Value {
 	img.Get("style").Set("width" /*  */, "var(--rh-size-icon-02)")
 	img.Get("style").Set("height" /* */, "var(--rh-size-icon-02)")
 	img.Set("src", "/menu_open_white.svg")
-	img.Set("alt", messages[navigationMenuButtonAlt])
+	img.Set("alt", messages[Menu])
 
 	div := js.Global().Get("document").Call("createElement", "div")
 	div.Get("style").Set("width" /*  */, "var(--rh-size-icon-02)")
@@ -124,7 +98,7 @@ func createNavigationTitleIcon() js.Value {
 	navigationTitleIcon.Get("style").Set("height" /* */, "var(--rh-size-icon-02)")
 	navigationTitleIcon.Get("style").Set("margin" /* */, "var(--rh-space-md)")
 	navigationTitleIcon.Set("src", "/logo.svg")
-	navigationTitleIcon.Set("alt", messages[navigationTitleIconAlt])
+	navigationTitleIcon.Set("alt", "")
 
 	return navigationTitleIcon
 }
@@ -132,7 +106,7 @@ func createNavigationTitleIcon() js.Value {
 func createNavigationTitle() js.Value {
 
 	navigationTitle := js.Global().Get("document").Call("createElement", "h3")
-	navigationTitle.Set("innerHTML", messages[navigationTitleText])
+	navigationTitle.Set("innerHTML", messages[DummyAI])
 
 	return navigationTitle
 }
