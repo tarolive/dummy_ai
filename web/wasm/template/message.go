@@ -20,9 +20,6 @@ var (
 			Menu:    "Menu",
 		},
 	}
-)
-
-var (
 	messages = allMessages[language]
 )
 
