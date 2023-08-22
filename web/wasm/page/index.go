@@ -28,6 +28,7 @@ var (
 func main() {
 
 	template.Page().Call("appendChild", _createSearchBar())
+	select {}
 }
 
 func _createSearchBar() js.Value {

@@ -14,4 +14,6 @@ func main() {
 	h2.Set("innerHTML", "Error 404 - Page Not Found")
 
 	template.Page().Call("appendChild", h2)
+
+	select {}
 }
