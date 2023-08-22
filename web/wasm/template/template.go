@@ -88,6 +88,11 @@ func createNavigationMenuButton() js.Value {
 	navigationMenuButton.Set("variant", "link")
 	navigationMenuButton.Call("appendChild", div)
 
+	if isDesktop {
+
+		navigationMenuButton.Get("style").Set("display" /* */, "none")
+	}
+
 	return navigationMenuButton
 }
 
