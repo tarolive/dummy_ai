@@ -124,6 +124,12 @@ func createDrawer() js.Value {
 	drawer.Get("style").Set("overflow-y" /*       */, "auto")
 	drawer.Get("style").Set("background-color" /* */, "#212427")
 	drawer.Get("style").Set("color" /*            */, "var(--rh-color-text-primary-on-dark)")
+	drawer.Get("style").Set("z-index" /*          */, 10)
+
+	if isMobile {
+
+		drawer.Get("style").Set("transform" /* */, "translateX(-100%)")
+	}
 
 	return drawer
 }
@@ -135,12 +141,21 @@ func createPage() js.Value {
 	page.Get("style").Set("top" /*              */, "72px")
 	page.Get("style").Set("right" /*            */, 0)
 	page.Get("style").Set("bottom" /*           */, 0)
-	page.Get("style").Set("left" /*             */, "290px")
 	page.Get("style").Set("padding" /*          */, "var(--rh-space-md)")
 	page.Get("style").Set("overflow-x" /*       */, "hidden")
 	page.Get("style").Set("overflow-y" /*       */, "auto")
 	page.Get("style").Set("background-color" /* */, "var(--rh-color-surface-lightest)")
 	page.Get("style").Set("color" /*            */, "var(--rh-color-text-primary-on-light)")
+
+	if isDesktop {
+
+		page.Get("style").Set("left" /* */, "290px")
+	}
+
+	if isMobile {
+
+		page.Get("style").Set("left" /* */, 0)
+	}
 
 	return page
 }
