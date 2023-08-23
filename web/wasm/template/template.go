@@ -7,7 +7,7 @@ import (
 var (
 	navigation           = createNavigation()
 	navigationMenuButton = createNavigationMenuButton()
-	navigationTitleIcon  = createNavigationTitleIcon()
+	navigationTitleImage = createNavigationTitleImage()
 	navigationTitle      = createNavigationTitle()
 	drawer               = createDrawer()
 	page                 = createPage()
@@ -31,9 +31,9 @@ func NavigationMenuButton() js.Value {
 	return navigationMenuButton
 }
 
-func NavigationTitleIcon() js.Value {
+func NavigationTitleImage() js.Value {
 
-	return navigationTitleIcon
+	return navigationTitleImage
 }
 
 func NavigationTitle() js.Value {
@@ -54,7 +54,7 @@ func Page() js.Value {
 func createNavigation() js.Value {
 
 	navigation := js.Global().Get("document").Call("createElement", "div")
-	navigation.Call("appendChild", navigationTitleIcon)
+	navigation.Call("appendChild", navigationTitleImage)
 	navigation.Call("appendChild", navigationTitle)
 	navigation.Get("style").Set("position" /*         */, "fixed")
 	navigation.Get("style").Set("top" /*              */, 0)
@@ -73,7 +73,7 @@ func createNavigation() js.Value {
 
 	if isMobile {
 
-		navigation.Call("insertBefore", navigationMenuButton, navigationTitleIcon)
+		navigation.Call("insertBefore", navigationMenuButton, navigationTitleImage)
 		navigation.Get("style").Set("padding-left" /* */, "var(--rh-space-md)")
 	}
 
@@ -101,16 +101,16 @@ func createNavigationMenuButton() js.Value {
 	return navigationMenuButton
 }
 
-func createNavigationTitleIcon() js.Value {
+func createNavigationTitleImage() js.Value {
 
-	navigationTitleIcon := js.Global().Get("document").Call("createElement", "img")
-	navigationTitleIcon.Get("style").Set("width" /*  */, "var(--rh-size-icon-02)")
-	navigationTitleIcon.Get("style").Set("height" /* */, "var(--rh-size-icon-02)")
-	navigationTitleIcon.Get("style").Set("margin" /* */, "var(--rh-space-md)")
-	navigationTitleIcon.Set("src", "/logo.svg")
-	navigationTitleIcon.Set("alt", "")
+	navigationTitleImage := js.Global().Get("document").Call("createElement", "img")
+	navigationTitleImage.Set("src", "/logo.svg")
+	navigationTitleImage.Set("alt", "")
+	navigationTitleImage.Get("style").Set("width" /*  */, "var(--rh-size-icon-02)")
+	navigationTitleImage.Get("style").Set("height" /* */, "var(--rh-size-icon-02)")
+	navigationTitleImage.Get("style").Set("margin" /* */, "var(--rh-space-md)")
 
-	return navigationTitleIcon
+	return navigationTitleImage
 }
 
 func createNavigationTitle() js.Value {
