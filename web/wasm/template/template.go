@@ -59,14 +59,23 @@ func createNavigation() js.Value {
 	navigation.Get("style").Set("right" /*            */, 0)
 	navigation.Get("style").Set("left" /*             */, 0)
 	navigation.Get("style").Set("height" /*           */, "72px")
-	navigation.Get("style").Set("padding" /*          */, "0 var(--rh-space-xl)")
 	navigation.Get("style").Set("display" /*          */, "flex")
 	navigation.Get("style").Set("align-items" /*      */, "center")
 	navigation.Get("style").Set("background-color" /* */, "var(--rh-color-surface-darkest)")
 	navigation.Get("style").Set("color" /*            */, "var(--rh-color-text-primary-on-dark)")
-	navigation.Call("appendChild", navigationMenuButton)
 	navigation.Call("appendChild", navigationTitleIcon)
 	navigation.Call("appendChild", navigationTitle)
+
+	if isDesktop {
+
+		navigation.Get("style").Set("padding-left" /* */, "var(--rh-space-xl)")
+	}
+
+	if isMobile {
+
+		navigation.Get("style").Set("padding-left" /* */, "var(--rh-space-md)")
+		navigation.Call("insertBefore", navigationMenuButton, navigationTitleIcon)
+	}
 
 	return navigation
 }
@@ -82,16 +91,12 @@ func createNavigationMenuButton() js.Value {
 	div := js.Global().Get("document").Call("createElement", "div")
 	div.Get("style").Set("width" /*  */, "var(--rh-size-icon-02)")
 	div.Get("style").Set("height" /* */, "var(--rh-size-icon-02)")
+	div.Get("style").Set("margin" /* */, "var(--rh-space-sm) 0")
 	div.Call("appendChild", img)
 
 	navigationMenuButton := js.Global().Get("document").Call("createElement", "rh-button")
 	navigationMenuButton.Set("variant", "link")
 	navigationMenuButton.Call("appendChild", div)
-
-	if isDesktop {
-
-		navigationMenuButton.Get("style").Set("display" /* */, "none")
-	}
 
 	return navigationMenuButton
 }
