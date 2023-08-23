@@ -54,6 +54,8 @@ func Page() js.Value {
 func createNavigation() js.Value {
 
 	navigation := js.Global().Get("document").Call("createElement", "div")
+	navigation.Call("appendChild", navigationTitleIcon)
+	navigation.Call("appendChild", navigationTitle)
 	navigation.Get("style").Set("position" /*         */, "fixed")
 	navigation.Get("style").Set("top" /*              */, 0)
 	navigation.Get("style").Set("right" /*            */, 0)
@@ -63,8 +65,6 @@ func createNavigation() js.Value {
 	navigation.Get("style").Set("align-items" /*      */, "center")
 	navigation.Get("style").Set("background-color" /* */, "var(--rh-color-surface-darkest)")
 	navigation.Get("style").Set("color" /*            */, "var(--rh-color-text-primary-on-dark)")
-	navigation.Call("appendChild", navigationTitleIcon)
-	navigation.Call("appendChild", navigationTitle)
 
 	if isDesktop {
 
@@ -73,8 +73,8 @@ func createNavigation() js.Value {
 
 	if isMobile {
 
-		navigation.Get("style").Set("padding-left" /* */, "var(--rh-space-md)")
 		navigation.Call("insertBefore", navigationMenuButton, navigationTitleIcon)
+		navigation.Get("style").Set("padding-left" /* */, "var(--rh-space-md)")
 	}
 
 	return navigation
@@ -83,16 +83,16 @@ func createNavigation() js.Value {
 func createNavigationMenuButton() js.Value {
 
 	img := js.Global().Get("document").Call("createElement", "img")
-	img.Get("style").Set("width" /*  */, "var(--rh-size-icon-02)")
-	img.Get("style").Set("height" /* */, "var(--rh-size-icon-02)")
 	img.Set("src", "/menu_open_white.svg")
 	img.Set("alt", messages[Menu])
+	img.Get("style").Set("width" /*  */, "var(--rh-size-icon-02)")
+	img.Get("style").Set("height" /* */, "var(--rh-size-icon-02)")
 
 	div := js.Global().Get("document").Call("createElement", "div")
+	div.Call("appendChild", img)
 	div.Get("style").Set("width" /*  */, "var(--rh-size-icon-02)")
 	div.Get("style").Set("height" /* */, "var(--rh-size-icon-02)")
 	div.Get("style").Set("margin" /* */, "var(--rh-space-sm) 0")
-	div.Call("appendChild", img)
 
 	navigationMenuButton := js.Global().Get("document").Call("createElement", "rh-button")
 	navigationMenuButton.Set("variant", "link")
