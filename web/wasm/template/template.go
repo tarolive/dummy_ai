@@ -5,6 +5,10 @@ import (
 )
 
 var (
+	isExpandedDrawer = false
+)
+
+var (
 	navigation           = createNavigation()
 	navigationMenuButton = createNavigationMenuButton()
 	navigationTitleImage = createNavigationTitleImage()
@@ -13,16 +17,17 @@ var (
 	page                 = createPage()
 )
 
-var (
-	isExpandedDrawer = false
-)
-
 func init() {
 
 	js.Global().Get("document").Get("documentElement").Set("lang", language)
 	js.Global().Get("document").Get("body").Call("appendChild", navigation)
 	js.Global().Get("document").Get("body").Call("appendChild", drawer)
 	js.Global().Get("document").Get("body").Call("appendChild", page)
+}
+
+func IsExpandedDrawer() bool {
+
+	return isExpandedDrawer
 }
 
 func Navigation() js.Value {
