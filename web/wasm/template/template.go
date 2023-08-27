@@ -121,7 +121,6 @@ func createNavigationMenuButton() js.Value {
 	navigationMenuButton := js.Global().Get("document").Call("createElement", "rh-button")
 	navigationMenuButton.Set("variant", "link")
 	navigationMenuButton.Call("appendChild", div)
-	navigationMenuButton.Get("style").Call("setProperty", "--_focus-outline-color", "transparent")
 
 	navigationMenuButton.Call("addEventListener", "click", js.FuncOf(func(this js.Value, args []js.Value) any {
 
