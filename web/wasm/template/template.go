@@ -73,8 +73,8 @@ func createNavigation() js.Value {
 
 	if isMobile {
 
+		navigation.Get("style").Set("padding-left" /* */, "var(--rh-space-xs)")
 		navigation.Call("insertBefore", navigationMenuButton, navigationTitleImage)
-		navigation.Get("style").Set("padding-left" /* */, "var(--rh-space-md)")
 	}
 
 	return navigation
@@ -106,9 +106,14 @@ func createNavigationTitleImage() js.Value {
 	navigationTitleImage := js.Global().Get("document").Call("createElement", "img")
 	navigationTitleImage.Set("src", "/logo.svg")
 	navigationTitleImage.Set("alt", "")
-	navigationTitleImage.Get("style").Set("width" /*  */, "var(--rh-size-icon-02)")
-	navigationTitleImage.Get("style").Set("height" /* */, "var(--rh-size-icon-02)")
-	navigationTitleImage.Get("style").Set("margin" /* */, "var(--rh-space-md)")
+	navigationTitleImage.Get("style").Set("width" /*        */, "var(--rh-size-icon-02)")
+	navigationTitleImage.Get("style").Set("height" /*       */, "var(--rh-size-icon-02)")
+	navigationTitleImage.Get("style").Set("margin-right" /* */, "var(--rh-space-md)")
+
+	if isMobile {
+
+		navigationTitleImage.Get("style").Set("margin-left" /* */, "var(--rh-space-sm)")
+	}
 
 	return navigationTitleImage
 }
