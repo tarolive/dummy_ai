@@ -13,6 +13,10 @@ var (
 	page                 = createPage()
 )
 
+var (
+	isExpandedDrawer = false
+)
+
 func init() {
 
 	js.Global().Get("document").Get("documentElement").Set("lang", language)
@@ -49,6 +53,21 @@ func Drawer() js.Value {
 func Page() js.Value {
 
 	return page
+}
+
+func ToggleDrawer() {
+
+	isExpandedDrawer = !isExpandedDrawer
+
+	if isExpandedDrawer {
+
+		drawer.Get("style").Set("transform" /* */, "translateX(0)")
+	}
+
+	if !isExpandedDrawer {
+
+		drawer.Get("style").Set("transform" /* */, "translateX(-100%)")
+	}
 }
 
 func createNavigation() js.Value {
@@ -97,6 +116,13 @@ func createNavigationMenuButton() js.Value {
 	navigationMenuButton := js.Global().Get("document").Call("createElement", "rh-button")
 	navigationMenuButton.Set("variant", "link")
 	navigationMenuButton.Call("appendChild", div)
+	navigationMenuButton.Get("style").Call("setProperty", "--_focus-outline-color", "transparent")
+
+	navigationMenuButton.Call("addEventListener", "click", js.FuncOf(func(this js.Value, args []js.Value) any {
+
+		ToggleDrawer()
+		return nil
+	}))
 
 	return navigationMenuButton
 }
