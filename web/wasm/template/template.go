@@ -9,20 +9,20 @@ var (
 )
 
 var (
-	navigation           = createNavigation()
+	page                 = createPage()
 	navigationMenuButton = createNavigationMenuButton()
 	navigationTitleImage = createNavigationTitleImage()
 	navigationTitle      = createNavigationTitle()
+	navigation           = createNavigation()
 	drawer               = createDrawer()
-	page                 = createPage()
 )
 
 func init() {
 
 	js.Global().Get("document").Get("documentElement").Set("lang", language)
+	js.Global().Get("document").Get("body").Call("appendChild", page)
 	js.Global().Get("document").Get("body").Call("appendChild", navigation)
 	js.Global().Get("document").Get("body").Call("appendChild", drawer)
-	js.Global().Get("document").Get("body").Call("appendChild", page)
 }
 
 func IsExpandedDrawer() bool {
@@ -30,9 +30,9 @@ func IsExpandedDrawer() bool {
 	return isExpandedDrawer
 }
 
-func Navigation() js.Value {
+func Page() js.Value {
 
-	return navigation
+	return page
 }
 
 func NavigationMenuButton() js.Value {
@@ -50,14 +50,14 @@ func NavigationTitle() js.Value {
 	return navigationTitle
 }
 
+func Navigation() js.Value {
+
+	return navigation
+}
+
 func Drawer() js.Value {
 
 	return drawer
-}
-
-func Page() js.Value {
-
-	return page
 }
 
 func ToggleDrawer() {
