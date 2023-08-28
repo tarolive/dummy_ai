@@ -43,6 +43,7 @@ func Run() {
 	serveFile("/RedHatText-Regular.woff2" /*         */, "./web/static/lib/font/RedHatText-Regular.woff2")
 	serveFile("/RedHatTextVF.woff2" /*               */, "./web/static/lib/font/RedHatTextVF.woff2")
 	serveFile("/RedHatTextVF-Italic.woff2" /*        */, "./web/static/lib/font/RedHatTextVF-Italic.woff2")
+	serveFile("/patternfly.min.css" /*               */, "./web/static/lib/patternfly/patternfly.min.css")
 	serveFile("/rhds.min.css" /*                     */, "./web/static/lib/rhds/rhds.min.css")
 	serveFile("/rhds.min.js" /*                      */, "./web/static/lib/rhds/rhds.min.js")
 	serveFile("/wasm_exec.js" /*                     */, "./web/static/lib/wasm/wasm_exec.js")
