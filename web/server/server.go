@@ -37,7 +37,7 @@ func Run() {
 	serveFile("/RedHatMono-Regular.woff2" /*         */, "./web/static/lib/font/RedHatMono-Regular.woff2")
 	serveFile("/RedHatMonoVF.woff2" /*               */, "./web/static/lib/font/RedHatMonoVF.woff2")
 	serveFile("/RedHatMonoVF-Italic.woff2" /*        */, "./web/static/lib/font/RedHatMonoVF-Italic.woff2")
-	serveFile("/RedHatText-Italic" /*                */, "./web/static/lib/font/RedHatText-Italic.woff2")
+	serveFile("/RedHatText-Italic.woff2" /*          */, "./web/static/lib/font/RedHatText-Italic.woff2")
 	serveFile("/RedHatText-Medium.woff2" /*          */, "./web/static/lib/font/RedHatText-Medium.woff2")
 	serveFile("/RedHatText-MediumItalic.woff2" /*    */, "./web/static/lib/font/RedHatText-MediumItalic.woff2")
 	serveFile("/RedHatText-Regular.woff2" /*         */, "./web/static/lib/font/RedHatText-Regular.woff2")
