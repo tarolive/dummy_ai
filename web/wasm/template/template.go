@@ -21,6 +21,8 @@ func Page() js.Value {
 
 func createPage() js.Value {
 
-	page := js.Global().Get("document").Call("createElement", "div")
+	page := js.Global().Get("document").Call("createElement", "section")
+	page.Get("classList").Call("add", "pf-v5-c-page__main-section")
+
 	return page
 }
