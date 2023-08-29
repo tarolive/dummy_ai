@@ -5,6 +5,7 @@ import (
 )
 
 var (
+	mastheadBrand   = createMastheadBrand()
 	mastheadMain    = createMastheadMain()
 	masthead        = createMasthead()
 	pageMainSection = createPageMainSection()
@@ -16,6 +17,11 @@ func init() {
 
 	js.Global().Get("document").Get("documentElement").Set("lang", language)
 	js.Global().Get("document").Get("body").Call("appendChild", page)
+}
+
+func MastheadBrand() js.Value {
+
+	return mastheadBrand
 }
 
 func MastheadMain() js.Value {
@@ -43,10 +49,23 @@ func Page() js.Value {
 	return page
 }
 
+func createMastheadBrand() js.Value {
+
+	mastheadBrand := js.Global().Get("document").Call("createElement", "img")
+	mastheadBrand.Get("classList").Call("add", "pf-v5-c-masthead__brand")
+	mastheadBrand.Set("src", "/logo.svg")
+	mastheadBrand.Set("alt", "")
+	mastheadBrand.Set("width", 24)
+	mastheadBrand.Set("height", 24)
+
+	return mastheadBrand
+}
+
 func createMastheadMain() js.Value {
 
 	mastheadMain := js.Global().Get("document").Call("createElement", "div")
 	mastheadMain.Get("classList").Call("add", "pf-v5-c-masthead__main")
+	mastheadMain.Call("appendChild", mastheadBrand)
 
 	return mastheadMain
 }
