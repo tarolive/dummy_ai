@@ -7,12 +7,13 @@ import (
 var (
 	pageMainSection = createPageMainSection()
 	pageMain        = createPageMain()
+	page            = createPage()
 )
 
 func init() {
 
 	js.Global().Get("document").Get("documentElement").Set("lang", language)
-	js.Global().Get("document").Get("body").Call("appendChild", pageMain)
+	js.Global().Get("document").Get("body").Call("appendChild", page)
 }
 
 func PageMainSection() js.Value {
@@ -23,6 +24,11 @@ func PageMainSection() js.Value {
 func PageMain() js.Value {
 
 	return pageMain
+}
+
+func Page() js.Value {
+
+	return page
 }
 
 func createPageMainSection() js.Value {
@@ -41,4 +47,13 @@ func createPageMain() js.Value {
 	pageMain.Call("appendChild", pageMainSection)
 
 	return pageMain
+}
+
+func createPage() js.Value {
+
+	page := js.Global().Get("document").Call("createElement", "div")
+	page.Get("classList").Call("add", "pf-v5-c-page")
+	page.Call("appendChild", pageMain)
+
+	return page
 }
