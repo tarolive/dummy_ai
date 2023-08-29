@@ -7,6 +7,7 @@ import (
 var (
 	mastheadBrand   = createMastheadBrand()
 	mastheadMain    = createMastheadMain()
+	mastheadContent = createMastheadContent()
 	masthead        = createMasthead()
 	pageMainSection = createPageMainSection()
 	pageMain        = createPageMain()
@@ -27,6 +28,11 @@ func MastheadBrand() js.Value {
 func MastheadMain() js.Value {
 
 	return mastheadMain
+}
+
+func MastheadContent() js.Value {
+
+	return mastheadContent
 }
 
 func Masthead() js.Value {
@@ -74,11 +80,26 @@ func createMastheadMain() js.Value {
 	return mastheadMain
 }
 
+func createMastheadContent() js.Value {
+
+	title := js.Global().Get("document").Call("createElement", "h1")
+	title.Get("classList").Call("add", "pf-v5-c-title")
+	title.Get("classList").Call("add", "pf-m-xl")
+	title.Set("innerHTML", messages[DummyAI])
+
+	mastheadContent := js.Global().Get("document").Call("createElement", "div")
+	mastheadContent.Get("classList").Call("add", "pf-v5-c-masthead__content")
+	mastheadContent.Call("appendChild", title)
+
+	return mastheadContent
+}
+
 func createMasthead() js.Value {
 
 	masthead := js.Global().Get("document").Call("createElement", "header")
 	masthead.Get("classList").Call("add", "pf-v5-c-masthead")
 	masthead.Call("appendChild", mastheadMain)
+	masthead.Call("appendChild", mastheadContent)
 
 	return masthead
 }
