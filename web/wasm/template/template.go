@@ -5,6 +5,7 @@ import (
 )
 
 var (
+	mastheadToggle  = createMastheadToggle()
 	mastheadBrand   = createMastheadBrand()
 	mastheadMain    = createMastheadMain()
 	mastheadContent = createMastheadContent()
@@ -18,6 +19,11 @@ func init() {
 
 	js.Global().Get("document").Get("documentElement").Set("lang", language)
 	js.Global().Get("document").Get("body").Call("appendChild", page)
+}
+
+func MastheadToggle() js.Value {
+
+	return mastheadToggle
 }
 
 func MastheadBrand() js.Value {
@@ -53,6 +59,27 @@ func PageMain() js.Value {
 func Page() js.Value {
 
 	return page
+}
+
+func createMastheadToggle() js.Value {
+
+	i := js.Global().Get("document").Call("createElement", "i")
+	i.Get("classList").Call("add", "fas")
+	i.Get("classList").Call("add", "fa-bars")
+	i.Set("ariaHidden", true)
+
+	button := js.Global().Get("document").Call("createElement", "button")
+	button.Get("classList").Call("add", "pf-v5-c-button")
+	button.Get("classList").Call("add", "pf-m-plain")
+	button.Set("type", "button")
+	button.Set("ariaLabel", messages[Menu])
+	button.Call("appendChild", i)
+
+	mastheadToggle := js.Global().Get("document").Call("createElement", "span")
+	mastheadToggle.Get("classList").Call("add", "pf-v5-c-masthead__toggle")
+	mastheadToggle.Call("appendChild", button)
+
+	return mastheadToggle
 }
 
 func createMastheadBrand() js.Value {
@@ -98,6 +125,8 @@ func createMasthead() js.Value {
 
 	masthead := js.Global().Get("document").Call("createElement", "header")
 	masthead.Get("classList").Call("add", "pf-v5-c-masthead")
+	masthead.Get("classList").Call("add", "pf-m-display-inline")
+	masthead.Call("appendChild", mastheadToggle)
 	masthead.Call("appendChild", mastheadMain)
 	masthead.Call("appendChild", mastheadContent)
 
