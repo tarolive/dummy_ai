@@ -37,7 +37,7 @@ func createPageMain() js.Value {
 
 	pageMain := js.Global().Get("document").Call("createElement", "main")
 	pageMain.Get("classList").Call("add", "pf-v5-c-page__main")
-	pageMain.Set("tabindex", -1)
+	pageMain.Set("tabIndex", -1)
 	pageMain.Call("appendChild", pageMainSection)
 
 	return pageMain
