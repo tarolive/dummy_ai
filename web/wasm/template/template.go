@@ -5,6 +5,7 @@ import (
 )
 
 var (
+	masthead        = createMasthead()
 	pageMainSection = createPageMainSection()
 	pageMain        = createPageMain()
 	page            = createPage()
@@ -14,6 +15,11 @@ func init() {
 
 	js.Global().Get("document").Get("documentElement").Set("lang", language)
 	js.Global().Get("document").Get("body").Call("appendChild", page)
+}
+
+func Masthead() js.Value {
+
+	return masthead
 }
 
 func PageMainSection() js.Value {
@@ -29,6 +35,14 @@ func PageMain() js.Value {
 func Page() js.Value {
 
 	return page
+}
+
+func createMasthead() js.Value {
+
+	masthead := js.Global().Get("document").Call("createElement", "header")
+	masthead.Get("classList").Call("add", "pf-v5-c-masthead")
+
+	return masthead
 }
 
 func createPageMainSection() js.Value {
@@ -53,6 +67,7 @@ func createPage() js.Value {
 
 	page := js.Global().Get("document").Call("createElement", "div")
 	page.Get("classList").Call("add", "pf-v5-c-page")
+	page.Call("appendChild", masthead)
 	page.Call("appendChild", pageMain)
 
 	return page
