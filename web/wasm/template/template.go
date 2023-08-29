@@ -51,12 +51,16 @@ func Page() js.Value {
 
 func createMastheadBrand() js.Value {
 
-	mastheadBrand := js.Global().Get("document").Call("createElement", "img")
+	img := js.Global().Get("document").Call("createElement", "img")
+	img.Set("src", "/logo.svg")
+	img.Set("alt", "")
+	img.Set("width", 24)
+	img.Set("height", 24)
+
+	mastheadBrand := js.Global().Get("document").Call("createElement", "a")
 	mastheadBrand.Get("classList").Call("add", "pf-v5-c-masthead__brand")
-	mastheadBrand.Set("src", "/logo.svg")
-	mastheadBrand.Set("alt", "")
-	mastheadBrand.Set("width", 24)
-	mastheadBrand.Set("height", 24)
+	mastheadBrand.Set("href", "/")
+	mastheadBrand.Call("appendChild", img)
 
 	return mastheadBrand
 }
