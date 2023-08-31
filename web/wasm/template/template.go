@@ -10,6 +10,8 @@ var (
 	mastheadMain    = createMastheadMain()
 	mastheadContent = createMastheadContent()
 	masthead        = createMasthead()
+	sidebarBody     = createSidebarBody()
+	sidebar         = createSidebar()
 	pageMainSection = createPageMainSection()
 	pageMain        = createPageMain()
 	page            = createPage()
@@ -44,6 +46,16 @@ func MastheadContent() js.Value {
 func Masthead() js.Value {
 
 	return masthead
+}
+
+func SidebarBody() js.Value {
+
+	return sidebarBody
+}
+
+func Sidebar() js.Value {
+
+	return sidebar
 }
 
 func PageMainSection() js.Value {
@@ -134,6 +146,23 @@ func createMasthead() js.Value {
 	return masthead
 }
 
+func createSidebarBody() js.Value {
+
+	sidebarBody := js.Global().Get("document").Call("createElement", "div")
+	sidebarBody.Get("classList").Call("add", "pf-v5-c-page__sidebar-body")
+
+	return sidebarBody
+}
+
+func createSidebar() js.Value {
+
+	sidebar := js.Global().Get("document").Call("createElement", "div")
+	sidebar.Get("classList").Call("add", "pf-v5-c-page__sidebar")
+	sidebar.Call("appendChild", sidebarBody)
+
+	return sidebar
+}
+
 func createPageMainSection() js.Value {
 
 	pageMainSection := js.Global().Get("document").Call("createElement", "section")
@@ -157,6 +186,7 @@ func createPage() js.Value {
 	page := js.Global().Get("document").Call("createElement", "div")
 	page.Get("classList").Call("add", "pf-v5-c-page")
 	page.Call("appendChild", masthead)
+	page.Call("appendChild", sidebar)
 	page.Call("appendChild", pageMain)
 
 	return page
