@@ -128,6 +128,7 @@ func createMastheadContent() js.Value {
 
 	mastheadContent := js.Global().Get("document").Call("createElement", "div")
 	mastheadContent.Get("classList").Call("add", "pf-v5-c-masthead__content")
+	mastheadContent.Get("classList").Call("add", "pf-v5-u-ml-0")
 	mastheadContent.Call("appendChild", title)
 
 	return mastheadContent
