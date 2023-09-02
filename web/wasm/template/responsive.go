@@ -1,5 +1,9 @@
 package template
 
+import (
+	"syscall/js"
+)
+
 var (
 	isDesktop = matchesBreakpoint()
 	isMobile  = !isDesktop
@@ -17,5 +21,12 @@ func IsMobile() bool {
 
 func matchesBreakpoint() bool {
 
-	return true
+	breakpoint := js.Global().Call("getComputedStyle", js.Global().Get("document").Get("documentElement")).Call("getPropertyValue", "--pf-v5-global--breakpoint--xl").String()
+
+	if breakpoint == "" {
+
+		breakpoint = "1200px"
+	}
+
+	return js.Global().Call("matchMedia", "(min-width: "+breakpoint+")").Get("matches").Bool()
 }
