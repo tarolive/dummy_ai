@@ -1,7 +1,7 @@
 package template
 
 var (
-	isDesktop = true
+	isDesktop = matchesBreakpoint()
 	isMobile  = !isDesktop
 )
 
@@ -13,4 +13,9 @@ func IsDesktop() bool {
 func IsMobile() bool {
 
 	return isMobile
+}
+
+func matchesBreakpoint() bool {
+
+	return true
 }
