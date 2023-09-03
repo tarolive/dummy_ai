@@ -73,6 +73,11 @@ func Page() js.Value {
 	return page
 }
 
+func ToggleSidebar() {
+
+	sidebar.Get("classList").Call("toggle", "pf-m-expanded")
+}
+
 func createMastheadToggle() js.Value {
 
 	i := js.Global().Get("document").Call("createElement", "i")
@@ -94,7 +99,7 @@ func createMastheadToggle() js.Value {
 
 	mastheadToggle.Call("addEventListener", "click", js.FuncOf(func(this js.Value, args []js.Value) any {
 
-		sidebar.Get("classList").Call("toggle", "pf-m-expanded")
+		ToggleSidebar()
 		return nil
 	}))
 
