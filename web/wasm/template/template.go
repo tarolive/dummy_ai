@@ -5,6 +5,10 @@ import (
 )
 
 var (
+	isExpandedSidebar = isDesktop
+)
+
+var (
 	mastheadToggle  = createMastheadToggle()
 	mastheadBrand   = createMastheadBrand()
 	mastheadMain    = createMastheadMain()
@@ -21,6 +25,11 @@ func init() {
 
 	js.Global().Get("document").Get("documentElement").Set("lang", language)
 	js.Global().Get("document").Get("body").Call("appendChild", page)
+}
+
+func IsExpandedSidebar() bool {
+
+	return isExpandedSidebar
 }
 
 func MastheadToggle() js.Value {
@@ -160,6 +169,16 @@ func createSidebar() js.Value {
 	sidebar := js.Global().Get("document").Call("createElement", "div")
 	sidebar.Get("classList").Call("add", "pf-v5-c-page__sidebar")
 	sidebar.Call("appendChild", sidebarBody)
+
+	if isExpandedSidebar {
+
+		sidebar.Get("classList").Call("add", "pf-m-expanded")
+
+	} else {
+
+		sidebar.Get("classList").Call("add", "pf-m-collapsed")
+
+	}
 
 	return sidebar
 }
