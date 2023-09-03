@@ -1,3 +1,5 @@
+"use strict";
+
 const wasmRun = function (wasmFile) {
 
 	const go = new Go();
