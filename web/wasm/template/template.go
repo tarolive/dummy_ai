@@ -133,15 +133,15 @@ func createMastheadMain() js.Value {
 
 func createMastheadContent() js.Value {
 
-	title := js.Global().Get("document").Call("createElement", "h1")
-	title.Get("classList").Call("add", "pf-v5-c-title")
-	title.Get("classList").Call("add", "pf-m-xl")
-	title.Set("innerHTML", messages[DummyAI])
+	div := js.Global().Get("document").Call("createElement", "div")
+	div.Get("classList").Call("add", "pf-v5-u-font-family-heading")
+	div.Get("classList").Call("add", "pf-v5-u-font-size-xl")
+	div.Set("innerHTML", messages[DummyAI])
 
 	mastheadContent := js.Global().Get("document").Call("createElement", "div")
 	mastheadContent.Get("classList").Call("add", "pf-v5-c-masthead__content")
 	mastheadContent.Get("classList").Call("add", "pf-v5-u-ml-0")
-	mastheadContent.Call("appendChild", title)
+	mastheadContent.Call("appendChild", div)
 
 	return mastheadContent
 }
