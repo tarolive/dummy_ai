@@ -5,10 +5,6 @@ import (
 )
 
 var (
-	isExpandedSidebar = isDesktop
-)
-
-var (
 	mastheadToggle  = createMastheadToggle()
 	mastheadBrand   = createMastheadBrand()
 	mastheadMain    = createMastheadMain()
@@ -25,11 +21,6 @@ func init() {
 
 	js.Global().Get("document").Get("documentElement").Set("lang", language)
 	js.Global().Get("document").Get("body").Call("appendChild", page)
-}
-
-func IsExpandedSidebar() bool {
-
-	return isExpandedSidebar
 }
 
 func MastheadToggle() js.Value {
@@ -98,7 +89,14 @@ func createMastheadToggle() js.Value {
 
 	mastheadToggle := js.Global().Get("document").Call("createElement", "span")
 	mastheadToggle.Get("classList").Call("add", "pf-v5-c-masthead__toggle")
+	mastheadToggle.Get("classList").Call("add", "pf-v5-u-display-none-on-lg")
 	mastheadToggle.Call("appendChild", button)
+
+	mastheadToggle.Call("addEventListener", "click", js.FuncOf(func(this js.Value, args []js.Value) any {
+
+		sidebar.Get("classList").Call("toggle", "pf-m-expanded")
+		return nil
+	}))
 
 	return mastheadToggle
 }
@@ -169,16 +167,6 @@ func createSidebar() js.Value {
 	sidebar := js.Global().Get("document").Call("createElement", "div")
 	sidebar.Get("classList").Call("add", "pf-v5-c-page__sidebar")
 	sidebar.Call("appendChild", sidebarBody)
-
-	if isExpandedSidebar {
-
-		sidebar.Get("classList").Call("add", "pf-m-expanded")
-
-	} else {
-
-		sidebar.Get("classList").Call("add", "pf-m-collapsed")
-
-	}
 
 	return sidebar
 }
