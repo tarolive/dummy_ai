@@ -168,7 +168,7 @@ func createPageMainSection() js.Value {
 
 	pageMainSection := js.Global().Get("document").Call("createElement", "section")
 	pageMainSection.Get("classList").Call("add", "pf-v5-c-page__main-section")
-	pageMainSection.Get("classList").Call("add", "pf-v5-u-p-md")
+	pageMainSection.Get("classList").Call("add", "pf-v5-u-p-lg")
 
 	return pageMainSection
 }
