@@ -12,6 +12,7 @@ var (
 	masthead        = createMasthead()
 	sidebarBody     = createSidebarBody()
 	sidebar         = createSidebar()
+	backdrop        = createBackdrop()
 	pageMainSection = createPageMainSection()
 	pageMain        = createPageMain()
 	page            = createPage()
@@ -56,6 +57,11 @@ func SidebarBody() js.Value {
 func Sidebar() js.Value {
 
 	return sidebar
+}
+
+func Backdrop() js.Value {
+
+	return backdrop
 }
 
 func PageMainSection() js.Value {
@@ -180,6 +186,14 @@ func createSidebar() js.Value {
 	return sidebar
 }
 
+func createBackdrop() js.Value {
+
+	backdrop := js.Global().Get("document").Call("createElement", "div")
+	backdrop.Get("classList").Call("add", "pf-v5-c-backdrop")
+
+	return backdrop
+}
+
 func createPageMainSection() js.Value {
 
 	pageMainSection := js.Global().Get("document").Call("createElement", "section")
@@ -205,6 +219,7 @@ func createPage() js.Value {
 	page.Get("classList").Call("add", "pf-v5-c-page")
 	page.Call("appendChild", masthead)
 	page.Call("appendChild", sidebar)
+	page.Call("appendChild", backdrop)
 	page.Call("appendChild", pageMain)
 
 	return page
