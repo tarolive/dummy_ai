@@ -108,12 +108,6 @@ func createMastheadToggle() js.Value {
 	mastheadToggle.Get("classList").Call("add", "pf-v5-u-display-none-on-xl")
 	mastheadToggle.Call("appendChild", button)
 
-	mastheadToggle.Call("addEventListener", "click", js.FuncOf(func(this js.Value, args []js.Value) any {
-
-		ToggleSidebar()
-		return nil
-	}))
-
 	return mastheadToggle
 }
 
