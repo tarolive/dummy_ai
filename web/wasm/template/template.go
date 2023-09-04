@@ -190,6 +190,7 @@ func createBackdrop() js.Value {
 
 	backdrop := js.Global().Get("document").Call("createElement", "div")
 	backdrop.Get("classList").Call("add", "pf-v5-c-backdrop")
+	backdrop.Get("classList").Call("add", "pf-v5-u-display-none-on-lg")
 
 	return backdrop
 }
