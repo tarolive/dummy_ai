@@ -188,9 +188,12 @@ func createSidebar() js.Value {
 
 func createBackdrop() js.Value {
 
+	zIndex := js.Global().Call("getComputedStyle", js.Global().Get("document").Get("documentElement")).Call("getPropertyValue", "--pf-v5-global--ZIndex--sm").String()
+
 	backdrop := js.Global().Get("document").Call("createElement", "div")
 	backdrop.Get("classList").Call("add", "pf-v5-c-backdrop")
 	backdrop.Get("classList").Call("add", "pf-v5-u-display-none-on-xl")
+	backdrop.Get("style").Call("setProperty", "--pf-v5-c-backdrop--ZIndex", zIndex)
 
 	return backdrop
 }
