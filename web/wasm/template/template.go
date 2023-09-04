@@ -82,6 +82,7 @@ func Page() js.Value {
 func ToggleSidebar() {
 
 	sidebar.Get("classList").Call("toggle", "pf-m-expanded")
+	backdrop.Get("classList").Call("toggle", "pf-v5-u-display-none")
 }
 
 func createMastheadToggle() js.Value {
@@ -193,6 +194,7 @@ func createBackdrop() js.Value {
 	backdrop := js.Global().Get("document").Call("createElement", "div")
 	backdrop.Get("classList").Call("add", "pf-v5-c-backdrop")
 	backdrop.Get("classList").Call("add", "pf-v5-u-display-none-on-xl")
+	backdrop.Get("classList").Call("add", "pf-v5-u-display-none")
 	backdrop.Get("style").Call("setProperty", "--pf-v5-c-backdrop--ZIndex", zIndex)
 
 	return backdrop
