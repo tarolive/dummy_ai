@@ -20,6 +20,18 @@ var (
 
 func init() {
 
+	mastheadToggle.Call("addEventListener", "click", js.FuncOf(func(this js.Value, args []js.Value) any {
+
+		ToggleSidebar()
+		return nil
+	}))
+
+	backdrop.Call("addEventListener", "click", js.FuncOf(func(this js.Value, args []js.Value) any {
+
+		ToggleSidebar()
+		return nil
+	}))
+
 	js.Global().Get("document").Get("documentElement").Set("lang", language)
 	js.Global().Get("document").Get("body").Call("appendChild", page)
 }
