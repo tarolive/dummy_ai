@@ -104,7 +104,7 @@ func createMastheadToggle() js.Value {
 
 	mastheadToggle := js.Global().Get("document").Call("createElement", "span")
 	mastheadToggle.Get("classList").Call("add", "pf-v5-c-masthead__toggle")
-	mastheadToggle.Get("classList").Call("add", "pf-v5-u-display-none-on-lg")
+	mastheadToggle.Get("classList").Call("add", "pf-v5-u-display-none-on-xl")
 	mastheadToggle.Call("appendChild", button)
 
 	mastheadToggle.Call("addEventListener", "click", js.FuncOf(func(this js.Value, args []js.Value) any {
@@ -190,7 +190,7 @@ func createBackdrop() js.Value {
 
 	backdrop := js.Global().Get("document").Call("createElement", "div")
 	backdrop.Get("classList").Call("add", "pf-v5-c-backdrop")
-	backdrop.Get("classList").Call("add", "pf-v5-u-display-none-on-lg")
+	backdrop.Get("classList").Call("add", "pf-v5-u-display-none-on-xl")
 
 	return backdrop
 }
