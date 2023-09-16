@@ -22,5 +22,7 @@ func IsMobile() bool {
 func matchesBreakpoint() bool {
 
 	breakpoint := js.Global().Call("getComputedStyle", js.Global().Get("document").Get("documentElement")).Call("getPropertyValue", "--pf-v5-global--breakpoint--xl").String()
-	return js.Global().Call("matchMedia", "(min-width: "+breakpoint+")").Get("matches").Bool()
+	mediaQuery := "(min-width: " + breakpoint + ")"
+
+	return js.Global().Call("matchMedia", mediaQuery).Get("matches").Bool()
 }
