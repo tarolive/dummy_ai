@@ -1,23 +1,31 @@
 package template
 
 const (
-	DummyAI = iota
-	Menu
+	App = iota
+	Error404Title
+	Error404Text
+	ButtonMenuAriaLabel
 )
 
 var (
 	allMessages = map[string]map[int]string{
 		English: {
-			DummyAI: "DummyAI",
-			Menu:    "Menu",
+			App:                 "DummyAI",
+			Error404Title:       "",
+			Error404Text:        "",
+			ButtonMenuAriaLabel: "Menu",
 		},
 		Spanish: {
-			DummyAI: "DummyAI",
-			Menu:    "Menú",
+			App:                 "DummyAI",
+			Error404Title:       "",
+			Error404Text:        "",
+			ButtonMenuAriaLabel: "Menú",
 		},
 		Portuguese: {
-			DummyAI: "DummyAI",
-			Menu:    "Menu",
+			App:                 "DummyAI",
+			Error404Title:       "",
+			Error404Text:        "",
+			ButtonMenuAriaLabel: "Menu",
 		},
 	}
 	messages = allMessages[language]
