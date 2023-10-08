@@ -114,7 +114,7 @@ func createMastheadToggle() js.Value {
 	button.Get("classList").Call("add", "pf-v5-u-px-md")
 	button.Get("classList").Call("add", "pf-v5-u-py-sm")
 	button.Set("type", "button")
-	button.Set("ariaLabel", messages[Menu])
+	button.Set("ariaLabel", messages[ButtonMenuAriaLabel])
 	button.Call("appendChild", i)
 
 	mastheadToggle := js.Global().Get("document").Call("createElement", "span")
@@ -155,7 +155,7 @@ func createMastheadContent() js.Value {
 	div := js.Global().Get("document").Call("createElement", "div")
 	div.Get("classList").Call("add", "pf-v5-u-font-family-heading")
 	div.Get("classList").Call("add", "pf-v5-u-font-size-xl")
-	div.Set("innerHTML", messages[DummyAI])
+	div.Set("innerHTML", messages[App])
 
 	mastheadContent := js.Global().Get("document").Call("createElement", "div")
 	mastheadContent.Get("classList").Call("add", "pf-v5-c-masthead__content")
