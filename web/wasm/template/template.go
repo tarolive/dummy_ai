@@ -95,6 +95,7 @@ func ToggleSidebar() {
 
 	sidebar.Get("classList").Call("toggle", "pf-m-expanded")
 	backdrop.Get("classList").Call("toggle", "pf-v5-u-display-none")
+
 	js.Global().Get("document").Get("body").Get("classList").Call("toggle", "pf-v5-c-backdrop__open")
 }
 
